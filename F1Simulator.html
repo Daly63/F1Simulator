@@ -2111,6 +2111,70 @@ function loadMotoGP2021() {
     document.getElementById('simulatorTitle').innerHTML = "🏍️ MOTOGP · СЕЗОН 2021 🏍️";
 }
 
+function loadMotoGP2020() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; 
+    seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+      	"Ducati Lenovo": { engine: 10, aero: 9, reliability: 8, manufacturer: "Ducati"},
+	    "Team Suzuki": { engine: 9, aero: 9, reliability: 8, manufacturer: "Suzuki" },
+	    "Avintia Ducati": { engine: 8, aero: 8, reliability: 8, manufacturer: "Ducati" },
+	    "Aprilia Racing": { engine: 8, aero: 8, reliability: 8, manufacturer: "Aprilia" },
+	    "Petronas Yamaha": { engine: 8, aero: 7, reliability: 8, manufacturer: "Yamaha" },
+	    "Red Bull KTM Factory": { engine: 8, aero: 8, reliability: 8, manufacturer: "KTM" },
+	    "Red Bull KTM Tech3": { engine: 7, aero: 7, reliability: 8, manufacturer: "KTM" },
+	    "Repsol Honda": { engine: 8, aero: 9, reliability: 8, manufacturer: "Honda" },
+	    "Castrol Honda LCR": { engine: 7, aero: 8, reliability: 8, manufacturer: "Honda" },
+	    "Monster Energy Yamaha": { engine: 9, aero: 10, reliability: 8, manufacturer: "Yamaha" },
+	    "Pramac Ducati": { engine: 9, aero: 9, reliability: 8, manufacturer: "Ducati" },
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) {
+        teams.push({ 
+            id: generateId(), 
+            name, 
+            engine: spec.engine, 
+            aero: spec.aero, 
+            reliability: spec.reliability,  
+            manufacturer: spec.manufacturer
+        });
+    }
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers24 = [
+        ["Jack Miller", "Ducati Lenovo", 8],
+        ["Francesco Bagnaia", "Ducati Lenovo", 10],
+	      ["Joan Mir", "Team Suzuki", 9],	
+	      ["Álex Rins", "Team Suzuki", 7],	
+	      ["Enea Bastianini	", "Avintia Ducati", 8],
+        ["Luca Marini", "Avintia Ducati", 7],
+	      ["Aleix Espargaró", "Aprilia Racing", 8.0],
+	      ["Lorenzo Savadori", "Aprilia Racing", 7],
+	      ["Franco Morbidelli", "Petronas Yamaha", 7],
+        ["Valentino Rossi", "Petronas Yamaha", 7],
+        ["Miguel Oliveira", "Red Bull KTM Factory", 6.5],
+        ["Brad Binder", "Red Bull KTM Factory", 8],
+        [" Iker Lecuona", "Red Bull KTM Tech3", 7],
+        ["Danilo Petrucci", "Red Bull KTM Tech3", 7],
+        ["Marc Márquez", "Repsol Honda", 8.5],
+        ["Pol Espargaró", "Repsol Honda", 7],
+        ["Takaaki Nakagami", "Castrol Honda LCR", 7],
+        ["Álex Márquez", "Castrol Honda LCR", 7],
+        ["Fabio Quartararo", "Monster Energy Yamaha", 10],
+        ["Maverick Viñales", "Monster Energy Yamaha", 7],
+        ["Jorge Martín", "Pramac Ducati", 7.5],
+        ["Johann Zarco", "Pramac Ducati", 8]
+    ];
+    for(let d of drivers24) {
+        let teamObj = tm[d[1]];
+        if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] });
+    }
+    totalSeasonRaces = 18;
+    currentSeasonYear = 2020;
+    pointsTable = [25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    renderPointsEditor();
+    syncPoints();
+    renderAll();
+    document.getElementById('simulatorTitle').innerHTML = "🏍️ MOTOGP · СЕЗОН 2020 🏍️";
+}
+
 function loadIndyCar2024() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
     const teamSpecs = {
@@ -2271,6 +2335,7 @@ function generateSeasonGrid() {
         else if (y === 2024) { loadMotoGP2024(); showSimulator(); }
         else if (y === 2023) { loadMotoGP2023(); showSimulator(); }
         else if (y === 2021) { loadMotoGP2021(); showSimulator(); }
+        else if (y === 2020) { loadMotoGP2020(); showSimulator(); }
         else alert(`Сезон MotoGP ${y} в разработке.`);
       } else if (currentMode === 'wec') alert("WEC в разработке, используйте кастомный режим.");
       else if (currentMode === 'fe') {
