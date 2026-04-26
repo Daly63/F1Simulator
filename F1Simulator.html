@@ -2046,17 +2046,17 @@ function loadMotoGP2021() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; 
     seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
     const teamSpecs = {
-      "Ducati Lenovo": { engine: 10, aero: 10, reliability: 8, manufacturer: "Ducati"},
-	    "Gresini Racing": { engine: 9, aero: 9, reliability: 8, manufacturer: "Ducati" },
-	    "VR46 Racing Team": { engine: 9, aero: 9, reliability: 8, manufacturer: "Ducati" },
-	    "Aprilia Racing": { engine: 8, aero: 9, reliability: 8, manufacturer: "Aprilia" },
-	    "Trackhouse MotoGP Team": { engine: 8, aero: 8, reliability: 8, manufacturer: "Aprilia" },
-	    "Red Bull KTM Factory": { engine: 7, aero: 8, reliability: 8, manufacturer: "KTM" },
-	    "Red Bull KTM Tech3": { engine: 7, aero: 8, reliability: 8, manufacturer: "KTM" },
-	    "Honda HRC Castrol": { engine: 7, aero: 8, reliability: 8, manufacturer: "Honda" },
-	    "Castrol Honda LCR": { engine: 6, aero: 7, reliability: 8, manufacturer: "Honda" },
-	    "Monster Energy Yamaha": { engine: 6, aero: 8, reliability: 8, manufacturer: "Yamaha" },
-	    "Prima Pramac Yamaha": { engine: 6, aero: 8, reliability: 8, manufacturer: "Yamaha" },
+      	"Ducati Lenovo": { engine: 10, aero: 9, reliability: 8, manufacturer: "Ducati"},
+	    "Team Suzuki": { engine: 9, aero: 9, reliability: 8, manufacturer: "Suzuki" },
+	    "Avintia Ducati": { engine: 8, aero: 8, reliability: 8, manufacturer: "Ducati" },
+	    "Aprilia Racing": { engine: 8, aero: 8, reliability: 8, manufacturer: "Aprilia" },
+	    "Petronas Yamaha": { engine: 8, aero: 7, reliability: 8, manufacturer: "Yamaha" },
+	    "Red Bull KTM Factory": { engine: 8, aero: 8, reliability: 8, manufacturer: "KTM" },
+	    "Red Bull KTM Tech3": { engine: 7, aero: 7, reliability: 8, manufacturer: "KTM" },
+	    "Repsol Honda": { engine: 8, aero: 9, reliability: 8, manufacturer: "Honda" },
+	    "Castrol Honda LCR": { engine: 7, aero: 8, reliability: 8, manufacturer: "Honda" },
+	    "Monster Energy Yamaha": { engine: 9, aero: 10, reliability: 8, manufacturer: "Yamaha" },
+	    "Pramac Ducati": { engine: 9, aero: 9, reliability: 8, manufacturer: "Ducati" },
     };
     for(let [name, spec] of Object.entries(teamSpecs)) {
         teams.push({ 
@@ -2070,37 +2070,36 @@ function loadMotoGP2021() {
     }
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
     const drivers24 = [
-        ["Marc Márquez", "Ducati Lenovo", 10],
-        ["Francesco Bagnaia", "Ducati Lenovo", 7],
-	      ["Álex Márquez", "Gresini Racing", 8.5],	
-	      ["Fermín Aldeguer", "Gresini Racing", 7],	
-	      ["Fabio Di Giannantonio", "VR46 Racing Team", 7],
-        ["Franco Morbidelli", "VR46 Racing Team", 6.5],
-	      ["Marco Bezzecchi", "Aprilia Racing", 8.0],
-	      ["Jorge Martín", "Aprilia Racing", 7],
-	      ["Raúl Fernández", "Trackhouse MotoGP Team", 7],
-        ["Ai Ogura", "Trackhouse MotoGP Team", 7],
-        ["Pedro Acosta", "Red Bull KTM Factory", 9],
-        ["Brad Binder", "Red Bull KTM Factory", 7],
-        ["Enea Bastianini", "Red Bull KTM Tech3", 7],
-        ["Maverick Viñales", "Red Bull KTM Tech3", 6.5],
-        ["Luca Marini", "Honda HRC Castrol", 7],
-        ["Joan Mir", "Honda HRC Castrol", 7],
-        ["Johann Zarco", "Castrol Honda LCR", 7],
-        ["Somkiat Chantra", "Castrol Honda LCR", 5],
-        ["Fabio Quartararo", "Monster Energy Yamaha", 8],
-        ["Álex Rins", "Monster Energy Yamaha", 7],
-        ["Jack Miller", "Prima Pramac Yamaha", 7],
-        ["Miguel Oliveira", "Prima Pramac Yamaha", 6.5]
+        ["Jack Miller", "Ducati Lenovo", 8],
+        ["Francesco Bagnaia", "Ducati Lenovo", 10],
+	      ["Joan Mir", "Team Suzuki", 9],	
+	      ["Álex Rins", "Team Suzuki", 7],	
+	      ["Enea Bastianini	", "Avintia Ducati", 8],
+        ["Luca Marini", "Avintia Ducati", 7],
+	      ["Aleix Espargaró", "Aprilia Racing", 8.0],
+	      ["Lorenzo Savadori", "Aprilia Racing", 7],
+	      ["Franco Morbidelli", "Petronas Yamaha", 7],
+        ["Valentino Rossi", "Petronas Yamaha", 7],
+        ["Miguel Oliveira", "Red Bull KTM Factory", 6.5],
+        ["Brad Binder", "Red Bull KTM Factory", 8],
+        [" Iker Lecuona", "Red Bull KTM Tech3", 7],
+        ["Danilo Petrucci", "Red Bull KTM Tech3", 7],
+        ["Marc Márquez", "Repsol Honda", 8.5],
+        ["Pol Espargaró", "Repsol Honda", 7],
+        ["Takaaki Nakagami", "Castrol Honda LCR", 7],
+        ["Álex Márquez", "Castrol Honda LCR", 7],
+        ["Fabio Quartararo", "Monster Energy Yamaha", 10],
+        ["Maverick Viñales", "Monster Energy Yamaha", 7],
+        ["Jorge Martín", "Pramac Ducati", 7.5],
+        ["Johann Zarco", "Pramac Ducati", 8]
     ];
     for(let d of drivers24) {
         let teamObj = tm[d[1]];
         if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] });
     }
-    totalSeasonRaces = 22;
+    totalSeasonRaces = 18;
     currentSeasonYear = 2021;
     pointsTable = [25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
-    motogpSprintPoints = [12, 9, 7, 6, 5, 4, 3, 2, 1];
     renderPointsEditor();
     syncPoints();
     renderAll();
