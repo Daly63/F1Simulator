@@ -1025,7 +1025,7 @@ function renderWikipediaTable() {
                 cellClass += hasPoints ? ' points-cell-bg' : ' non-points-cell'; }
         }
       } else { raceDisplay = '▪'; }
-      if (currentMode === 'motogp' && raceIdx < sprintHistory.length && sprintHistory[raceIdx] && sprintHistory[raceIdx][driver.id] !== undefined) {
+      if (currentMode === 'motogp' && currentSeasonYear >= 2023 && raceIdx < sprintHistory.length && sprintHistory[raceIdx] && sprintHistory[raceIdx][driver.id] !== undefined) {
         let sprintPos = sprintHistory[raceIdx][driver.id];
         if (sprintPos !== '—' && sprintPos <= 9) sprintDisplay = `<span style="font-size:0.6rem; opacity:0.9; margin-left:4px;">${sprintPos}</span>`;
       }
@@ -1137,6 +1137,9 @@ function simulateRace() {
   if(teams.length === 0) { alert("Нет команд"); return; }
   if(totalSeasonRaces > 0 && completedRaces >= totalSeasonRaces) { alert(`Сезон завершён! Сбросьте сезон.`); return; }
   
+  // Проверяем, есть ли спринты в этом сезоне (только MotoGP с 2023 года)
+  const hasSprints = (currentMode === 'motogp' && currentSeasonYear >= 2023);
+  
   const reliabilityMap = Object.fromEntries(teams.map(t => [t.id, t.reliability]));
   const activeQual = [];
   for (let driver of drivers) {
@@ -1174,7 +1177,8 @@ function simulateRace() {
   let sprintManufacturerBest = {}, raceManufacturerBest = {};
   let currentTeamPoints = {}, currentManufacturerPoints = {};
 
-  if (currentMode === 'motogp') {
+  // === ЛОГИКА СПРИНТОВ (только для MotoGP с 2023 года) ===
+  if (currentMode === 'motogp' && hasSprints) {
     const activeSprint = [], dnfSprint = [];
     for (let driver of drivers) {
       const teamRel = reliabilityMap[driver.teamId] || 5;
@@ -1216,6 +1220,7 @@ function simulateRace() {
       }
     });
   }
+  // === КОНЕЦ ЛОГИКИ СПРИНТОВ ===
 
   const activeDrivers = [], dnfs = [];
   for (let driver of drivers) {
