@@ -7,286 +7,250 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg-primary: #050507;
-  --bg-secondary: rgba(15, 15, 25, 0.6);
-  --bg-card: rgba(20, 20, 35, 0.4);
-  --bg-glass: rgba(255, 255, 255, 0.03);
-  --border: rgba(255, 255, 255, 0.08);
-  --border-hover: rgba(225, 6, 0, 0.3);
-  --text-primary: #ffffff;
-  --text-secondary: rgba(255, 255, 255, 0.55);
-  --text-muted: rgba(255, 255, 255, 0.3);
-  --accent-red: #E10600;
-  --accent-red-glow: rgba(225, 6, 0, 0.4);
-  --accent-red-light: #ff3b30;
-  --accent-red-bright: #ff1a1a;
-  --success: #4ade80;
-  --warning: #ffffff;
-  --danger: #ff3b30;
-  --shadow: 0 8px 32px rgba(0,0,0,0.4);
-  --shadow-red: 0 4px 20px rgba(225, 6, 0, 0.25);
-  --radius: 16px;
-  --radius-sm: 12px;
-  --radius-lg: 20px;
-  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+--bg-primary: #050507;
+--bg-secondary: rgba(15, 15, 25, 0.6);
+--bg-card: rgba(20, 20, 35, 0.4);
+--bg-glass: rgba(255, 255, 255, 0.03);
+--border: rgba(255, 255, 255, 0.08);
+--border-hover: rgba(225, 6, 0, 0.3);
+--text-primary: #ffffff;
+--text-secondary: rgba(255, 255, 255, 0.55);
+--text-muted: rgba(255, 255, 255, 0.3);
+--accent-red: #E10600;
+--accent-red-glow: rgba(225, 6, 0, 0.4);
+--accent-red-light: #ff3b30;
+--accent-red-bright: #ff1a1a;
+--success: #4ade80;
+--warning: #ffffff;
+--danger: #ff3b30;
+--shadow: 0 8px 32px rgba(0,0,0,0.4);
+--shadow-red: 0 4px 20px rgba(225, 6, 0, 0.25);
+--radius: 16px;
+--radius-sm: 12px;
+--radius-lg: 20px;
+--transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
-
 body {
-  background: 
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225,6,0,0.12), transparent),
-    radial-gradient(ellipse 60% 40% at 80% 100%, rgba(225,6,0,0.06), transparent),
-    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(100,100,255,0.03), transparent),
-    var(--bg-primary);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  color: var(--text-primary);
-  min-height: 100vh;
-  padding: 1.5rem;
-  line-height: 1.5;
-  overflow-x: hidden;
+background:
+radial-gradient(ellipse 80% 50% at 50% -20%, rgba(225,6,0,0.12), transparent),
+radial-gradient(ellipse 60% 40% at 80% 100%, rgba(225,6,0,0.06), transparent),
+radial-gradient(ellipse 50% 50% at 20% 80%, rgba(100,100,255,0.03), transparent),
+var(--bg-primary);
+font-family: 'Inter', system-ui, -apple-system, sans-serif;
+color: var(--text-primary);
+min-height: 100vh;
+padding: 1.5rem;
+line-height: 1.5;
+overflow-x: hidden;
 }
-
 body::before {
-  content: '';
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(225,6,0,0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(225,6,0,0.02) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: -1;
+content: '';
+position: fixed;
+top: 0; left: 0; right: 0; bottom: 0;
+background-image:
+radial-gradient(circle at 20% 50%, rgba(225,6,0,0.03) 0%, transparent 50%),
+radial-gradient(circle at 80% 80%, rgba(225,6,0,0.02) 0%, transparent 50%);
+pointer-events: none;
+z-index: -1;
 }
-
 .mode-switch {
-  display: flex;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 2.5rem;
-  flex-wrap: wrap;
-  padding: 0.5rem;
-  background: var(--bg-glass);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--border);
-  border-radius: 60px;
-  width: fit-content;
-  margin-left: auto;
-  margin-right: auto;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+display: flex;
+justify-content: center;
+gap: 0.5rem;
+margin-bottom: 2.5rem;
+flex-wrap: wrap;
+padding: 0.5rem;
+background: var(--bg-glass);
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+border: 1px solid var(--border);
+border-radius: 60px;
+width: fit-content;
+margin-left: auto;
+margin-right: auto;
+box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
 }
-
 .mode-btn {
-  background: transparent;
-  border: none;
-  padding: 0.75rem 1.6rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  color: var(--text-secondary);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  letter-spacing: 0.3px;
-  position: relative;
-  overflow: hidden;
+background: transparent;
+border: none;
+padding: 0.75rem 1.6rem;
+border-radius: 50px;
+font-size: 0.9rem;
+font-weight: 600;
+cursor: pointer;
+transition: var(--transition);
+color: var(--text-secondary);
+display: flex;
+align-items: center;
+gap: 0.5rem;
+letter-spacing: 0.3px;
+position: relative;
+overflow: hidden;
 }
-
 .mode-btn::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-  opacity: 0;
-  transition: opacity 0.3s;
-  border-radius: inherit;
+content: '';
+position: absolute;
+inset: 0;
+background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+opacity: 0;
+transition: opacity 0.3s;
+border-radius: inherit;
 }
-
 .mode-btn:hover { color: var(--text-primary); transform: translateY(-1px); }
 .mode-btn:hover::before { opacity: 1; }
-
-.mode-btn.active { 
-  background: var(--accent-red); color: white;
-  box-shadow: 0 4px 20px rgba(225, 6, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
-  transform: translateY(-1px);
+.mode-btn.active {
+background: var(--accent-red); color: white;
+box-shadow: 0 4px 20px rgba(225, 6, 0, 0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+transform: translateY(-1px);
 }
-
 .mode-btn.motogp.active { background: #0066cc; box-shadow: 0 4px 20px rgba(0,102,204,0.4), inset 0 1px 0 rgba(255,255,255,0.2); }
 .mode-btn.indycar.active { background: #2e7d32; box-shadow: 0 4px 20px rgba(46,125,50,0.4), inset 0 1px 0 rgba(255,255,255,0.2); }
 .mode-btn.wec.active { background: #ff8c00; box-shadow: 0 4px 20px rgba(255,140,0,0.4), inset 0 1px 0 rgba(255,255,255,0.2); }
-
 .season-screen { max-width: 1600px; margin: 0 auto; width: 100%; animation: fadeIn 0.5s ease-out; }
 .season-header { text-align: center; margin-bottom: 3rem; padding: 2rem 0; position: relative; }
 .season-header::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 50%; transform: translateX(-50%);
-  width: 100px; height: 3px;
-  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-  border-radius: 2px;
+content: '';
+position: absolute;
+bottom: 0; left: 50%; transform: translateX(-50%);
+width: 100px; height: 3px;
+background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+border-radius: 2px;
 }
-
 .season-header h1 {
-  font-size: 3rem; font-weight: 900;
-  background: linear-gradient(135deg, #fff 0%, var(--accent-red-light) 50%, var(--accent-red) 100%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  margin-bottom: 0.8rem; letter-spacing: -1px; text-shadow: none;
+font-size: 3rem; font-weight: 900;
+background: linear-gradient(135deg, #fff 0%, var(--accent-red-light) 50%, var(--accent-red) 100%);
+-webkit-background-clip: text; background-clip: text; color: transparent;
+margin-bottom: 0.8rem; letter-spacing: -1px; text-shadow: none;
 }
-
 .season-header p { color: var(--text-secondary); font-size: 1.1rem; font-weight: 400; max-width: 500px; margin: 0 auto; }
-
 .season-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
-  gap: 0.6rem; margin-bottom: 2.5rem; max-height: 60vh; overflow-y: auto; padding: 1rem;
-  background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  border-radius: var(--radius-lg); border: 1px solid var(--border);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+display: grid; grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+gap: 0.6rem; margin-bottom: 2.5rem; max-height: 60vh; overflow-y: auto; padding: 1rem;
+background: var(--bg-glass); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+border-radius: var(--radius-lg); border: 1px solid var(--border);
+box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
 }
-
 .season-card {
-  background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
-  padding: 0.9rem 0.5rem; text-align: center; font-weight: 700; font-size: 0.9rem;
-  cursor: pointer; transition: var(--transition); color: var(--text-secondary);
-  position: relative; overflow: hidden; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+padding: 0.9rem 0.5rem; text-align: center; font-weight: 700; font-size: 0.9rem;
+cursor: pointer; transition: var(--transition); color: var(--text-secondary);
+position: relative; overflow: hidden; backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
 }
-
 .season-card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-  background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
-  opacity: 0; transition: var(--transition);
+content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+background: linear-gradient(90deg, transparent, var(--accent-red), transparent);
+opacity: 0; transition: var(--transition);
 }
-
 .season-card::after {
-  content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(225,6,0,0.1), transparent);
-  opacity: 0; transition: opacity 0.3s;
+content: ''; position: absolute; inset: 0;
+background: linear-gradient(135deg, rgba(225,6,0,0.1), transparent);
+opacity: 0; transition: opacity 0.3s;
 }
-
 .season-card:hover {
-  background: rgba(225, 6, 0, 0.15); border-color: var(--accent-red); color: white;
-  transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(225, 6, 0, 0.2);
+background: rgba(225, 6, 0, 0.15); border-color: var(--accent-red); color: white;
+transform: translateY(-3px) scale(1.02); box-shadow: 0 8px 25px rgba(225, 6, 0, 0.2);
 }
-
 .season-card:hover::before { opacity: 1; }
 .season-card:hover::after { opacity: 1; }
 .season-card:active { transform: translateY(-1px) scale(0.98); }
-
 .custom-card {
-  background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(251,191,36,0.05));
-  border: 1px solid rgba(251,191,36,0.3); color: var(--warning); font-weight: 800; letter-spacing: 0.5px;
+background: linear-gradient(135deg, rgba(251,191,36,0.1), rgba(251,191,36,0.05));
+border: 1px solid rgba(251,191,36,0.3); color: var(--warning); font-weight: 800; letter-spacing: 0.5px;
 }
-
 .custom-card:hover {
-  background: linear-gradient(135deg, var(--warning), #f59e0b); color: #000;
-  box-shadow: 0 8px 25px rgba(251,191,36,0.3); border-color: var(--warning);
+background: linear-gradient(135deg, var(--warning), #f59e0b); color: #000;
+box-shadow: 0 8px 25px rgba(251,191,36,0.3); border-color: var(--warning);
 }
-
 .simulator-screen { display: none; max-width: 1800px; margin: 0 auto; width: 100%; animation: fadeIn 0.4s ease-out; }
-
 .f1-header {
-  text-align: center; margin-bottom: 2rem; padding: 1.5rem;
-  background: var(--bg-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-radius: var(--radius-lg); border: 1px solid var(--border); border-left: 4px solid var(--accent-red);
-  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.05); position: relative; overflow: hidden;
+text-align: center; margin-bottom: 2rem; padding: 1.5rem;
+background: var(--bg-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+border-radius: var(--radius-lg); border: 1px solid var(--border); border-left: 4px solid var(--accent-red);
+box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.05); position: relative; overflow: hidden;
 }
-
 .f1-header::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
 }
-
 .f1-header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 0.8rem; color: var(--text-primary); letter-spacing: -0.5px; }
-
 .race-progress {
-  background: linear-gradient(135deg, var(--accent-red), #b80500); padding: 0.6rem 1.5rem;
-  border-radius: 50px; font-weight: 700; font-size: 0.9rem; display: inline-block; color: white;
-  box-shadow: 0 4px 15px rgba(225, 6, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
-  letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1);
+background: linear-gradient(135deg, var(--accent-red), #b80500); padding: 0.6rem 1.5rem;
+border-radius: 50px; font-weight: 700; font-size: 0.9rem; display: inline-block; color: white;
+box-shadow: 0 4px 15px rgba(225, 6, 0, 0.3), inset 0 1px 0 rgba(255,255,255,0.2);
+letter-spacing: 0.5px; border: 1px solid rgba(255,255,255,0.1);
 }
-
 .back-btn {
-  background: var(--bg-glass); backdrop-filter: blur(10px); border: 1px solid var(--border);
-  color: var(--text-secondary); padding: 0.7rem 1.5rem; border-radius: 50px;
-  font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition);
-  margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.5rem;
+background: var(--bg-glass); backdrop-filter: blur(10px); border: 1px solid var(--border);
+color: var(--text-secondary); padding: 0.7rem 1.5rem; border-radius: 50px;
+font-size: 0.9rem; font-weight: 500; cursor: pointer; transition: var(--transition);
+margin-bottom: 1.2rem; display: inline-flex; align-items: center; gap: 0.5rem;
 }
-
 .back-btn:hover { background: rgba(255,255,255,0.08); color: var(--text-primary); transform: translateX(-3px); border-color: rgba(255,255,255,0.15); }
-
 .card {
-  background: var(--bg-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-  border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 1.2rem;
-  overflow: hidden; box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.03);
-  transition: var(--transition); position: relative;
+background: var(--bg-glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+border-radius: var(--radius-lg); border: 1px solid var(--border); margin-bottom: 1.2rem;
+overflow: hidden; box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.03);
+transition: var(--transition); position: relative;
 }
-
 .card::before {
-  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
+content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.08), transparent);
 }
-
 .card:hover { border-color: var(--border-hover); box-shadow: 0 12px 40px rgba(0,0,0,0.5), 0 0 0 1px rgba(225,6,0,0.1); transform: translateY(-2px); }
-
 .card h2 {
-  font-size: 1rem; font-weight: 700; padding: 1rem 1.4rem; border-left: 3px solid var(--accent-red);
-  color: var(--accent-red); background: linear-gradient(90deg, rgba(225,6,0,0.06), transparent);
-  letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem;
+font-size: 1rem; font-weight: 700; padding: 1rem 1.4rem; border-left: 3px solid var(--accent-red);
+color: var(--accent-red); background: linear-gradient(90deg, rgba(225,6,0,0.06), transparent);
+letter-spacing: 0.5px; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem;
 }
-
 .card-content { padding: 1.2rem 1.4rem; }
 .grid-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
-
 /* ========== ЕДИНЫЕ СТИЛИ ДЛЯ ВСЕХ ТАБЛИЦ С ИСТОРИЕЙ ========== */
 .wiki-table,
 .teams-history-table,
 .manufacturers-history-table {
-  width: 100%;
-  border-collapse: separate;
-  border-spacing: 0;
-  font-size: 0.78rem;
-  background: rgba(0,0,0,0.2);
-  border-radius: var(--radius-sm);
-  overflow: hidden;
-  min-width: 1400px;
-  backdrop-filter: blur(5px);
-  table-layout: fixed;
+width: 100%;
+border-collapse: separate;
+border-spacing: 0;
+font-size: 0.78rem;
+background: rgba(0,0,0,0.2);
+border-radius: var(--radius-sm);
+overflow: hidden;
+min-width: 1400px;
+backdrop-filter: blur(5px);
+table-layout: fixed;
 }
-
 .wiki-table th,
 .wiki-table td,
 .teams-history-table th,
 .teams-history-table td,
 .manufacturers-history-table th,
 .manufacturers-history-table td {
-  border: 1px solid rgba(255,255,255,0.05);
-  padding: 0.35rem 0.4rem;
-  text-align: center;
-  white-space: nowrap;
-  height: 32px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  vertical-align: middle;
+border: 1px solid rgba(255,255,255,0.05);
+padding: 0.35rem 0.4rem;
+text-align: center;
+white-space: nowrap;
+height: 32px;
+overflow: hidden;
+text-overflow: ellipsis;
+vertical-align: middle;
 }
-
 .wiki-table th,
 .teams-history-table th,
 .manufacturers-history-table th {
-  background: linear-gradient(135deg, rgba(225,6,0,0.9), rgba(180,5,0,0.9));
-  color: white;
-  font-weight: 700;
-  position: sticky;
-  top: 0;
-  z-index: 10;
-  text-transform: uppercase;
-  font-size: 0.68rem;
-  letter-spacing: 0.6px;
-  height: 36px;
-  backdrop-filter: blur(10px);
-  padding: 0.4rem 0.3rem;
+background: linear-gradient(135deg, rgba(225,6,0,0.9), rgba(180,5,0,0.9));
+color: white;
+font-weight: 700;
+position: sticky;
+top: 0;
+z-index: 10;
+text-transform: uppercase;
+font-size: 0.68rem;
+letter-spacing: 0.6px;
+height: 36px;
+backdrop-filter: blur(10px);
+padding: 0.4rem 0.3rem;
 }
-
 /* Фиксированная ширина для первых столбцов (Поз) */
 .wiki-table th:first-child,
 .wiki-table td:first-child,
@@ -294,14 +258,13 @@ body::before {
 .teams-history-table td:first-child,
 .manufacturers-history-table th:first-child,
 .manufacturers-history-table td:first-child {
-  text-align: center;
-  font-weight: 700;
-  width: 40px;
-  min-width: 40px;
-  max-width: 40px;
-  background: rgba(255,255,255,0.03);
+text-align: center;
+font-weight: 700;
+width: 40px;
+min-width: 40px;
+max-width: 40px;
+background: rgba(255,255,255,0.03);
 }
-
 /* Фиксированная ширина для столбца "Пилот" / "Команда" / "Производитель" */
 .wiki-table th:nth-child(2),
 .wiki-table td:nth-child(2),
@@ -309,36 +272,62 @@ body::before {
 .teams-history-table td:nth-child(2),
 .manufacturers-history-table th:nth-child(2),
 .manufacturers-history-table td:nth-child(2) {
-  text-align: left;
-  width: 160px;
-  min-width: 160px;
-  max-width: 160px;
-  font-weight: 600;
-  padding-left: 0.8rem;
+text-align: left;
+width: 160px;
+min-width: 160px;
+max-width: 160px;
+font-weight: 600;
+padding-left: 0.8rem;
 }
 
-/* Фиксированная ширина для столбца "Команда" (только в личном зачёте) */
-.wiki-table th:nth-child(3),
-.wiki-table td:nth-child(3) {
-  text-align: left;
-  width: 130px;
-  min-width: 130px;
-  max-width: 130px;
-  padding-left: 0.8rem;
+/* ====== ОТДЕЛЬНЫЕ СТИЛИ ДЛЯ МОТОГП ====== */
+/* Столбец "Bike" (3-й в MotoGP) */
+.wiki-table.motogp-table th:nth-child(3),
+.wiki-table.motogp-table td:nth-child(3) {
+    text-align: left;
+    width: 70px;
+    min-width: 70px;
+    max-width: 70px;
+    padding-left: 0.6rem;
+    color: var(--text-primary);
+}
+/* Столбец "Команда" (4-й в MotoGP) - узкий */
+.wiki-table.motogp-table th:nth-child(4),
+.wiki-table.motogp-table td:nth-child(4) {
+    text-align: left;
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    padding-left: 0.8rem;
+}
+/* Столбцы гонок в MotoGP (начинаются с 5-го) */
+.wiki-table.motogp-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:last-child),
+.wiki-table.motogp-table td:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(4)):not(:last-child) {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding: 0.3rem 0.1rem;
 }
 
-/* Фиксированная ширина для столбцов с гонками (Г1, Г2, ...) */
-.wiki-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
-.wiki-table td:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
-.teams-history-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
-.teams-history-table td:not(:first-child):not(:nth-child(2)):not(:last-child),
-.manufacturers-history-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
-.manufacturers-history-table td:not(:first-child):not(:nth-child(2)):not(:last-child) {
-  width: 36px;
-  min-width: 36px;
-  max-width: 36px;
-  padding: 0.3rem 0.1rem;
+/* ====== СТАНДАРТНЫЕ СТИЛИ (F1, Indy и т.д.) ====== */
+/* Столбец "Команда" (3-й в обычных таблицах) */
+.wiki-table:not(.motogp-table) th:nth-child(3),
+.wiki-table:not(.motogp-table) td:nth-child(3) {
+    text-align: left;
+    width: 130px;
+    min-width: 130px;
+    max-width: 130px;
+    padding-left: 0.8rem;
 }
+/* Столбцы гонок в обычных таблицах (начинаются с 4-го) */
+.wiki-table:not(.motogp-table) th:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
+.wiki-table:not(.motogp-table) td:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child) {
+    width: 36px;
+    min-width: 36px;
+    max-width: 36px;
+    padding: 0.3rem 0.1rem;
+}
+/* ====== КОНЕЦ СТИЛЕЙ МОТОГП ====== */
 
 /* Последний столбец с очками */
 .wiki-table th:last-child,
@@ -347,142 +336,144 @@ body::before {
 .teams-history-table td:last-child,
 .manufacturers-history-table th:last-child,
 .manufacturers-history-table td:last-child {
-  width: 55px;
-  min-width: 55px;
-  max-width: 55px;
-  font-weight: 700;
-  padding: 0.3rem 0.2rem;
+width: 55px;
+min-width: 55px;
+max-width: 55px;
+font-weight: 700;
+padding: 0.3rem 0.2rem;
 }
-
 .teams-history-table .total-points,
 .manufacturers-history-table .total-points,
 .wiki-table .points-cell {
-  color: var(--warning);
-  font-weight: 700;
-  font-size: 0.9rem;
-  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+color: var(--warning);
+font-weight: 700;
+font-size: 0.9rem;
+text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
-
 /* Специфические стили для личного зачёта */
-.wiki-table .race-cell { 
-  position: relative; 
-  text-align: center; 
-  vertical-align: middle;
-  min-width: 36px;
-  padding: 0.3rem 0.1rem !important;
-  font-family: 'JetBrains Mono', monospace;
-  font-weight: 600;
+.wiki-table .race-cell {
+position: relative;
+text-align: center;
+vertical-align: middle;
+min-width: 36px;
+padding: 0.3rem 0.1rem !important;
+font-family: 'JetBrains Mono', monospace;
+font-weight: 600;
 }
-
 .wiki-table .pole-indicator {
-  position: absolute;
-  top: 1px;
-  right: 2px;
-  font-size: 6px;
-  color: var(--accent-red);
-  font-weight: 900;
-  line-height: 1;
-  text-shadow: 0 0 4px rgba(225,6,0,0.8);
-  z-index: 2;
-  animation: pulse 2s infinite;
+position: absolute;
+top: 1px;
+right: 2px;
+font-size: 6px;
+color: var(--accent-red);
+font-weight: 900;
+line-height: 1;
+text-shadow: 0 0 4px rgba(225,6,0,0.8);
+z-index: 2;
+animation: pulse 2s infinite;
 }
-
 /* Адаптивность для мобильных */
 @media (max-width: 1024px) {
-  .wiki-table,
-  .teams-history-table,
-  .manufacturers-history-table {
-    min-width: 1100px;
-  }
-  .wiki-table th:nth-child(2),
-  .wiki-table td:nth-child(2),
-  .teams-history-table th:nth-child(2),
-  .teams-history-table td:nth-child(2),
-  .manufacturers-history-table th:nth-child(2),
-  .manufacturers-history-table td:nth-child(2) {
-    width: 130px; min-width: 130px; max-width: 130px;
-  }
-  .wiki-table th:nth-child(3),
-  .wiki-table td:nth-child(3) {
-    width: 110px; min-width: 110px; max-width: 110px;
-  }
-  .wiki-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
-  .wiki-table td:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
-  .teams-history-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
-  .teams-history-table td:not(:first-child):not(:nth-child(2)):not(:last-child),
-  .manufacturers-history-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
-  .manufacturers-history-table td:not(:first-child):not(:nth-child(2)):not(:last-child) {
-    width: 32px; min-width: 32px; max-width: 32px;
-  }
+.wiki-table,
+.teams-history-table,
+.manufacturers-history-table {
+min-width: 1100px;
+}
+.wiki-table th:nth-child(2),
+.wiki-table td:nth-child(2),
+.teams-history-table th:nth-child(2),
+.teams-history-table td:nth-child(2),
+.manufacturers-history-table th:nth-child(2),
+.manufacturers-history-table td:nth-child(2) {
+width: 130px; min-width: 130px; max-width: 130px;
+}
+/* MotoGP адаптив */
+.wiki-table.motogp-table th:nth-child(3),
+.wiki-table.motogp-table td:nth-child(3) {
+    width: 60px; min-width: 60px; max-width: 60px;
+}
+.wiki-table.motogp-table th:nth-child(4),
+.wiki-table.motogp-table td:nth-child(4) {
+    width: 90px; min-width: 90px; max-width: 90px;
 }
 
+/* Обычные чемпионаты адаптив */
+.wiki-table:not(.motogp-table) th:nth-child(3),
+.wiki-table:not(.motogp-table) td:nth-child(3) {
+width: 110px; min-width: 110px; max-width: 110px;
+}
+.wiki-table th:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
+.wiki-table td:not(:first-child):not(:nth-child(2)):not(:nth-child(3)):not(:last-child),
+.teams-history-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
+.teams-history-table td:not(:first-child):not(:nth-child(2)):not(:last-child),
+.manufacturers-history-table th:not(:first-child):not(:nth-child(2)):not(:last-child),
+.manufacturers-history-table td:not(:first-child):not(:nth-child(2)):not(:last-child) {
+width: 32px; min-width: 32px; max-width: 32px;
+}
+}
 @media (max-width: 768px) {
-  body { padding: 0.75rem; }
-  .mode-switch { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0.4rem; margin-bottom: 1.5rem; }
-  .mode-btn { padding: 0.6rem 1rem; font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
-  .season-header h1 { font-size: 1.8rem; }
-  .season-header p { font-size: 0.95rem; }
-  .f1-header h1 { font-size: 1.4rem; }
-  .grid-2col { grid-template-columns: 1fr; gap: 1rem; }
-  .card h2 { font-size: 0.9rem; padding: 0.8rem 1rem; }
-  .card-content { padding: 1rem; }
-  .form-group { flex-direction: column; gap: 0.6rem; }
-  .form-field { min-width: 100%; }
-  button { width: 100%; padding: 0.9rem; }
-  .full-width-btn { padding: 1rem; font-size: 1rem; }
-  
-  .wiki-table, .teams-history-table, .manufacturers-history-table {
-    min-width: 800px; font-size: 0.7rem;
-  }
-  .wiki-table th, .wiki-table td,
-  .teams-history-table th, .teams-history-table td,
-  .manufacturers-history-table th, .manufacturers-history-table td {
-    padding: 0.3rem 0.2rem; height: 28px;
-  }
-  .wiki-table th, .teams-history-table th, .manufacturers-history-table th {
-    height: 32px; font-size: 0.62rem;
-  }
-  .compact-table { font-size: 0.75rem; }
-  .compact-table th, .compact-table td { padding: 0.4rem 0.5rem; }
-  .wiki-table-wrapper { margin: 0.5rem -1rem -1rem -1rem; padding: 0 1rem 1rem 1rem; }
-  .list-container { max-height: 250px; }
-  .list-item { padding: 0.7rem 0.8rem; font-size: 0.85rem; }
+body { padding: 0.75rem; }
+.mode-switch { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding: 0.4rem; margin-bottom: 1.5rem; }
+.mode-btn { padding: 0.6rem 1rem; font-size: 0.8rem; white-space: nowrap; flex-shrink: 0; }
+.season-header h1 { font-size: 1.8rem; }
+.season-header p { font-size: 0.95rem; }
+.f1-header h1 { font-size: 1.4rem; }
+.grid-2col { grid-template-columns: 1fr; gap: 1rem; }
+.card h2 { font-size: 0.9rem; padding: 0.8rem 1rem; }
+.card-content { padding: 1rem; }
+.form-group { flex-direction: column; gap: 0.6rem; }
+.form-field { min-width: 100%; }
+button { width: 100%; padding: 0.9rem; }
+.full-width-btn { padding: 1rem; font-size: 1rem; }
+.wiki-table, .teams-history-table, .manufacturers-history-table {
+min-width: 800px; font-size: 0.7rem;
 }
-
+.wiki-table th, .wiki-table td,
+.teams-history-table th, .teams-history-table td,
+.manufacturers-history-table th, .manufacturers-history-table td {
+padding: 0.3rem 0.2rem; height: 28px;
+}
+.wiki-table th, .teams-history-table th, .manufacturers-history-table th {
+height: 32px; font-size: 0.62rem;
+}
+.compact-table { font-size: 0.75rem; }
+.compact-table th, .compact-table td { padding: 0.4rem 0.5rem; }
+.wiki-table-wrapper { margin: 0.5rem -1rem -1rem -1rem; padding: 0 1rem 1rem 1rem; }
+.list-container { max-height: 250px; }
+.list-item { padding: 0.7rem 0.8rem; font-size: 0.85rem; }
+}
 @media (max-width: 480px) {
-  body { padding: 0.5rem; }
-  .season-header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .season-header p { font-size: 0.85rem; }
-  .mode-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
-  .f1-header { padding: 1rem; margin-bottom: 1rem; }
-  .f1-header h1 { font-size: 1.2rem; }
-  .race-progress { font-size: 0.8rem; padding: 0.5rem 1rem; }
-  .back-btn { padding: 0.6rem 1rem; font-size: 0.8rem; margin-bottom: 1rem; }
-  .card h2 { font-size: 0.85rem; padding: 0.7rem 0.9rem; }
-  .card-content { padding: 0.8rem; }
-  .form-field input, .form-field select { padding: 0.6rem 0.8rem; font-size: 0.85rem; }
-  button { padding: 0.8rem; font-size: 0.85rem; }
-  .full-width-btn { padding: 0.9rem; font-size: 0.95rem; }
-  
-  .wiki-table, .teams-history-table, .manufacturers-history-table {
-    min-width: 650px; font-size: 0.65rem;
-  }
-  .wiki-table th, .wiki-table td,
-  .teams-history-table th, .teams-history-table td,
-  .manufacturers-history-table th, .manufacturers-history-table td {
-    padding: 0.25rem 0.15rem; height: 26px;
-  }
-  .wiki-table th, .teams-history-table th, .manufacturers-history-table th {
-    height: 30px; font-size: 0.6rem;
-  }
-  .compact-table { font-size: 0.7rem; }
-  .compact-table th, .compact-table td { padding: 0.35rem 0.4rem; }
-  .list-item { padding: 0.6rem 0.7rem; font-size: 0.8rem; }
-  .team-metrics { font-size: 0.7rem; }
-  .metric-badge { padding: 0.2rem 0.4rem; font-size: 0.65rem; }
-  .pole-info { font-size: 0.8rem; padding: 0.6rem 1rem; }
+body { padding: 0.5rem; }
+.season-header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+.season-header p { font-size: 0.85rem; }
+.mode-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
+.f1-header { padding: 1rem; margin-bottom: 1rem; }
+.f1-header h1 { font-size: 1.2rem; }
+.race-progress { font-size: 0.8rem; padding: 0.5rem 1rem; }
+.back-btn { padding: 0.6rem 1rem; font-size: 0.8rem; margin-bottom: 1rem; }
+.card h2 { font-size: 0.85rem; padding: 0.7rem 0.9rem; }
+.card-content { padding: 0.8rem; }
+.form-field input, .form-field select { padding: 0.6rem 0.8rem; font-size: 0.85rem; }
+button { padding: 0.8rem; font-size: 0.85rem; }
+.full-width-btn { padding: 0.9rem; font-size: 0.95rem; }
+.wiki-table, .teams-history-table, .manufacturers-history-table {
+min-width: 650px; font-size: 0.65rem;
 }
-
+.wiki-table th, .wiki-table td,
+.teams-history-table th, .teams-history-table td,
+.manufacturers-history-table th, .manufacturers-history-table td {
+padding: 0.25rem 0.15rem; height: 26px;
+}
+.wiki-table th, .teams-history-table th, .manufacturers-history-table th {
+height: 30px; font-size: 0.6rem;
+}
+.compact-table { font-size: 0.7rem; }
+.compact-table th, .compact-table td { padding: 0.35rem 0.4rem; }
+.list-item { padding: 0.6rem 0.7rem; font-size: 0.8rem; }
+.team-metrics { font-size: 0.7rem; }
+.metric-badge { padding: 0.2rem 0.4rem; font-size: 0.65rem; }
+.pole-info { font-size: 0.8rem; padding: 0.6rem 1rem; }
+}
 .compact-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
 .compact-table th, .compact-table td { padding: 0.5rem 0.6rem; text-align: left; border-bottom: 1px solid rgba(255,255,255,0.05); }
 .compact-table th { background: rgba(0,0,0,0.3); color: var(--accent-red); font-weight: 700; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.5px; }
@@ -491,300 +482,252 @@ body::before {
 .compact-table .team-name { font-weight: 600; }
 .compact-table .points { text-align: right; font-weight: 700; color: var(--warning); }
 .compact-table .race-points { text-align: right; color: var(--text-secondary); font-size: 0.85rem; }
-
 .form-group {
-  background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); padding: 1rem;
-  display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.2rem; border: 1px solid var(--border);
+background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); padding: 1rem;
+display: flex; flex-wrap: wrap; gap: 0.7rem; margin-bottom: 1.2rem; border: 1px solid var(--border);
 }
-
 .form-field { flex: 1; min-width: 110px; }
 .form-field label {
-  font-size: 0.7rem; color: var(--accent-red); display: block; margin-bottom: 0.4rem;
-  font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+font-size: 0.7rem; color: var(--accent-red); display: block; margin-bottom: 0.4rem;
+font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
 }
-
 .form-field input, .form-field select {
-  width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
-  padding: 0.7rem 0.9rem; border-radius: 10px; color: var(--text-primary);
-  font-size: 0.9rem; transition: var(--transition); font-family: 'Inter', sans-serif;
+width: 100%; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+padding: 0.7rem 0.9rem; border-radius: 10px; color: var(--text-primary);
+font-size: 0.9rem; transition: var(--transition); font-family: 'Inter', sans-serif;
 }
-
 .form-field input:focus, .form-field select:focus {
-  outline: none; border-color: var(--accent-red);
-  box-shadow: 0 0 0 3px rgba(225,6,0,0.15), 0 0 20px rgba(225,6,0,0.1);
-  background: rgba(0,0,0,0.4);
+outline: none; border-color: var(--accent-red);
+box-shadow: 0 0 0 3px rgba(225,6,0,0.15), 0 0 20px rgba(225,6,0,0.1);
+background: rgba(0,0,0,0.4);
 }
-
 button {
-  background: linear-gradient(135deg, var(--accent-red), #b80500); border: none;
-  padding: 0.7rem 1.4rem; border-radius: 10px; font-weight: 600; color: white;
-  cursor: pointer; transition: var(--transition); font-size: 0.9rem; letter-spacing: 0.3px;
-  position: relative; overflow: hidden; font-family: 'Inter', sans-serif;
-  box-shadow: 0 4px 15px rgba(225, 6, 0, 0.2);
+background: linear-gradient(135deg, var(--accent-red), #b80500); border: none;
+padding: 0.7rem 1.4rem; border-radius: 10px; font-weight: 600; color: white;
+cursor: pointer; transition: var(--transition); font-size: 0.9rem; letter-spacing: 0.3px;
+position: relative; overflow: hidden; font-family: 'Inter', sans-serif;
+box-shadow: 0 4px 15px rgba(225, 6, 0, 0.2);
 }
-
 button::after {
-  content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transition: left 0.5s;
+content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+transition: left 0.5s;
 }
-
 button:hover::after { left: 100%; }
 button:hover { filter: brightness(1.15); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(225, 6, 0, 0.35); }
 button:active { transform: translateY(0) scale(0.98); }
-
 .danger-btn { background: linear-gradient(135deg, var(--accent-red-bright), #cc0000); box-shadow: 0 2px 10px rgba(255, 26, 26, 0.4); }
 .danger-btn:hover { background: linear-gradient(135deg, #ff0000, #cc0000); transform: translateY(-2px) scale(1.05); box-shadow: 0 4px 20px rgba(255, 0, 0, 0.6); }
-
 .full-width-btn {
-  width: 100%; padding: 1.2rem; font-size: 1.1rem; border-radius: var(--radius);
-  margin: 1.2rem 0; font-weight: 800; letter-spacing: 1px;
-  background: linear-gradient(135deg, var(--accent-red), #8b0400);
-  box-shadow: 0 8px 30px rgba(225, 6, 0, 0.3); text-transform: uppercase;
-  position: relative; overflow: hidden;
+width: 100%; padding: 1.2rem; font-size: 1.1rem; border-radius: var(--radius);
+margin: 1.2rem 0; font-weight: 800; letter-spacing: 1px;
+background: linear-gradient(135deg, var(--accent-red), #8b0400);
+box-shadow: 0 8px 30px rgba(225, 6, 0, 0.3); text-transform: uppercase;
+position: relative; overflow: hidden;
 }
-
 .full-width-btn::before {
-  content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
-  opacity: 0; transition: opacity 0.3s;
+content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 60%);
+opacity: 0; transition: opacity 0.3s;
 }
-
 .full-width-btn:hover::before { opacity: 1; }
 .full-width-btn:hover { box-shadow: 0 12px 40px rgba(225, 6, 0, 0.4); transform: translateY(-3px); }
-
 .list-container { max-height: 320px; overflow-y: auto; }
-
 .list-item {
-  background: rgba(0,0,0,0.2); margin-bottom: 0.6rem; padding: 0.85rem 1rem;
-  border-radius: var(--radius-sm); border-left: 3px solid var(--accent-red);
-  display: flex; justify-content: space-between; align-items: center;
-  font-size: 0.9rem; transition: var(--transition); backdrop-filter: blur(5px);
+background: rgba(0,0,0,0.2); margin-bottom: 0.6rem; padding: 0.85rem 1rem;
+border-radius: var(--radius-sm); border-left: 3px solid var(--accent-red);
+display: flex; justify-content: space-between; align-items: center;
+font-size: 0.9rem; transition: var(--transition); backdrop-filter: blur(5px);
 }
-
 .list-item:hover { background: rgba(225,6,0,0.08); border-left-color: var(--accent-red-light); transform: translateX(4px); }
-
 .team-metrics { display: flex; gap: 0.4rem; font-size: 0.75rem; margin-top: 0.4rem; flex-wrap: wrap; }
-
 .metric-badge {
-  background: rgba(0,0,0,0.3); padding: 0.25rem 0.6rem; border-radius: 6px;
-  color: var(--text-secondary); font-weight: 500; border: 1px solid var(--border); font-size: 0.75rem;
+background: rgba(0,0,0,0.3); padding: 0.25rem 0.6rem; border-radius: 6px;
+color: var(--text-secondary); font-weight: 500; border: 1px solid var(--border); font-size: 0.75rem;
 }
-
 .race-results-table, .constructor-table, .points-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
-
 .race-results-table th, .constructor-table th, .points-table th {
-  background: rgba(0,0,0,0.3); padding: 0.7rem 0.8rem; text-align: left; color: var(--accent-red);
-  font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.8px;
-  border-bottom: 2px solid var(--accent-red); height: 40px;
+background: rgba(0,0,0,0.3); padding: 0.7rem 0.8rem; text-align: left; color: var(--accent-red);
+font-weight: 700; text-transform: uppercase; font-size: 0.72rem; letter-spacing: 0.8px;
+border-bottom: 2px solid var(--accent-red); height: 40px;
 }
-
 .race-results-table td, .constructor-table td, .points-table td {
-  padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); height: 36px;
+padding: 0.55rem 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.05); height: 36px;
 }
-
 .points-cell { color: var(--warning); font-weight: 700; font-size: 0.95rem; text-shadow: 0 0 10px rgba(251,191,36,0.3); }
-
 .points-config { background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); padding: 1.2rem; border: 1px solid var(--border); }
 .points-config h3 { margin-bottom: 0.8rem; font-size: 0.95rem; color: var(--accent-red); font-weight: 700; letter-spacing: 0.5px; }
-
 .points-table input {
-  width: 55px; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
-  padding: 0.35rem 0.5rem; border-radius: 6px; color: var(--text-primary);
-  text-align: center; font-size: 0.85rem; font-weight: 600; font-family: 'JetBrains Mono', monospace;
+width: 55px; background: rgba(0,0,0,0.3); border: 1px solid var(--border);
+padding: 0.35rem 0.5rem; border-radius: 6px; color: var(--text-primary);
+text-align: center; font-size: 0.85rem; font-weight: 600; font-family: 'JetBrains Mono', monospace;
 }
-
 .points-table input:focus {
-  outline: none; border-color: var(--accent-red); background: rgba(0,0,0,0.4);
-  box-shadow: 0 0 0 2px rgba(225,6,0,0.15);
+outline: none; border-color: var(--accent-red); background: rgba(0,0,0,0.4);
+box-shadow: 0 0 0 2px rgba(225,6,0,0.15);
 }
-
 .pole-info {
-  background: linear-gradient(135deg, rgba(251,191,36,0.12), rgba(225,6,0,0.08));
-  border-left: 3px solid var(--warning); padding: 0.8rem 1.2rem; margin-bottom: 1rem;
-  border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-weight: 600; font-size: 0.9rem;
-  text-align: center; color: var(--warning); backdrop-filter: blur(5px);
-  border: 1px solid rgba(251,191,36,0.15); border-left-width: 3px;
+background: linear-gradient(135deg, rgba(251,191,36,0.12), rgba(225,6,0,0.08));
+border-left: 3px solid var(--warning); padding: 0.8rem 1.2rem; margin-bottom: 1rem;
+border-radius: 0 var(--radius-sm) var(--radius-sm) 0; font-weight: 600; font-size: 0.9rem;
+text-align: center; color: var(--warning); backdrop-filter: blur(5px);
+border: 1px solid rgba(251,191,36,0.15); border-left-width: 3px;
 }
-
 .dnf-cell { background: rgba(255, 50, 50, 0.08); color: #ff6666; font-weight: 500; }
-
 .podium-1 { background: linear-gradient(135deg, #FFD700, #FFA500); color: #000; font-weight: 800; text-shadow: none; box-shadow: inset 0 0 10px rgba(255,215,0,0.3); }
 .podium-2 { background: linear-gradient(135deg, #E8E8E8, #C0C0C0); color: #000; font-weight: 700; }
 .podium-3 { background: linear-gradient(135deg, #CD7F32, #8B4513); color: #fff; font-weight: 700; }
 .points-cell-bg { background: rgba(100, 149, 237, 0.15); color: #fff; font-weight: 600; }
 .non-points-cell { background: transparent; color: var(--text-muted); }
-
-.champion-row { 
-  background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 193, 7, 0.05));
-  border: 1px solid rgba(255, 215, 0, 0.3); border-left: 3px solid #FFD700;
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
-  animation: championGlow 3s ease-in-out infinite;
+.champion-row {
+background: linear-gradient(135deg, rgba(255, 215, 0, 0.12), rgba(255, 193, 7, 0.05));
+border: 1px solid rgba(255, 215, 0, 0.3); border-left: 3px solid #FFD700;
+box-shadow: 0 0 20px rgba(255, 215, 0, 0.1);
+animation: championGlow 3s ease-in-out infinite;
 }
-
 @keyframes championGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); }
-  50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); }
+0%, 100% { box-shadow: 0 0 20px rgba(255, 215, 0, 0.1); }
+50% { box-shadow: 0 0 30px rgba(255, 215, 0, 0.2); }
 }
-
 .champion-row td:first-child {
-  color: #FFD700; font-weight: 900; text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); font-size: 1.1rem;
+color: #FFD700; font-weight: 900; text-shadow: 0 0 10px rgba(255, 215, 0, 0.6); font-size: 1.1rem;
 }
-
 .pole-indicator {
-  position: absolute; top: 2px; right: 4px; font-size: 7px; color: var(--accent-red);
-  font-weight: 900; line-height: 1; text-shadow: 0 0 4px rgba(225,6,0,0.8);
-  z-index: 2; animation: pulse 2s infinite;
+position: absolute; top: 2px; right: 4px; font-size: 7px; color: var(--accent-red);
+font-weight: 900; line-height: 1; text-shadow: 0 0 4px rgba(225,6,0,0.8);
+z-index: 2; animation: pulse 2s infinite;
 }
-
 @keyframes pulse {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(0.9); }
+0%, 100% { opacity: 1; transform: scale(1); }
+50% { opacity: 0.6; transform: scale(0.9); }
 }
-
-.race-cell { 
-  position: relative; text-align: center; vertical-align: middle;
-  min-width: 38px; padding: 0.3rem 0.2rem !important;
-  font-family: 'JetBrains Mono', monospace; font-weight: 600;
+.race-cell {
+position: relative; text-align: center; vertical-align: middle;
+min-width: 38px; padding: 0.3rem 0.2rem !important;
+font-family: 'JetBrains Mono', monospace; font-weight: 600;
 }
-
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: rgba(0,0,0,0.2); border-radius: 3px; }
 ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, var(--accent-red), #8b0400); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, var(--accent-red-light), var(--accent-red)); }
-
 .empty-msg {
-  text-align: center; color: var(--text-secondary); padding: 2rem; font-size: 0.9rem;
-  background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); border: 1px dashed rgba(255,255,255,0.1);
+text-align: center; color: var(--text-secondary); padding: 2rem; font-size: 0.9rem;
+background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); border: 1px dashed rgba(255,255,255,0.1);
 }
-
 .wiki-table-wrapper { overflow-x: auto; margin: 0.5rem -1.4rem -1.2rem -1.4rem; padding: 0 1.4rem 1.2rem 1.4rem; }
-
 @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-
 .card { animation: fadeIn 0.4s ease-out backwards; }
 </style>
 </head>
 <body>
-
 <div class="mode-switch">
-  <button id="switchF1" class="mode-btn active">🏎️ F1</button>
-  <button id="switchMotoGP" class="mode-btn">🏍️ MotoGP</button>
-  <button id="switchIndyCar" class="mode-btn">🏁 IndyCar</button>
-  <button id="switchWEC" class="mode-btn">🏎️ WEC</button>
-  <button id="switchFE" class="mode-btn">⚡ Formula E</button>
+<button id="switchF1" class="mode-btn active">🏎️ F1</button>
+<button id="switchMotoGP" class="mode-btn">🏍️ MotoGP</button>
+<button id="switchIndyCar" class="mode-btn">🏁 IndyCar</button>
+<button id="switchWEC" class="mode-btn">🏎️ WEC</button>
+<button id="switchFE" class="mode-btn">⚡ Formula E</button>
 </div>
-
 <div id="seasonScreen" class="season-screen">
-  <div class="season-header">
-    <h1 id="mainTitle">🏁 F1 RACE SIMULATOR 🏁</h1>
-    <p>Выберите сезон или создайте свою вселенную</p>
-  </div>
-  <div id="seasonGrid" class="season-grid"></div>
-  <div style="text-align: center; margin-top: 1rem;">
-    <div id="customModeBtn" class="season-card custom-card" style="display: inline-block; padding: 0.9rem 2rem;">✨ СВОЯ СИМУЛЯЦИЯ ✨</div>
-  </div>
+<div class="season-header">
+<h1 id="mainTitle">🏁 F1 RACE SIMULATOR 🏁</h1>
+<p>Выберите сезон или создайте свою вселенную</p>
 </div>
-
+<div id="seasonGrid" class="season-grid"></div>
+<div style="text-align: center; margin-top: 1rem;">
+<div id="customModeBtn" class="season-card custom-card" style="display: inline-block; padding: 0.9rem 2rem;">✨ СВОЯ СИМУЛЯЦИЯ ✨</div>
+</div>
+</div>
 <div id="simulatorScreen" class="simulator-screen">
-  <button id="backToSeasonBtn" class="back-btn">← Назад к сезонам</button>
-  <div class="f1-header">
-    <h1 id="simulatorTitle">🏆 ФОРМУЛА-1 · СЕЗОН 2026 🏆</h1>
-    <div style="display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 0.8rem; flex-wrap: wrap;">
-      <div class="race-progress" id="raceProgress">Гонка 0 / 0</div>
-      <button id="resetSeasonBtn" style="background:var(--bg-glass); border:1px solid var(--border); color:var(--text-secondary);">🔄 Сброс сезона</button>
-    </div>
-  </div>
-
-  <div class="grid-2col">
-    <div class="card">
-      <h2>🏢 Команды</h2>
-      <div class="card-content">
-        <div class="form-group">
-          <div class="form-field"><label>Название</label><input type="text" id="teamName" placeholder="Новая команда"></div>
-          <div class="form-field"><label>Двигатель</label><input type="number" id="teamEngine" min="1" max="10" value="7"></div>
-          <div class="form-field"><label>Аэро</label><input type="number" id="teamAero" min="1" max="10" value="7"></div>
-          <div class="form-field"><label>Надёжность</label><input type="number" id="teamReliability" min="1" max="10" value="7"></div>
-          <button id="addTeamBtn">➕</button>
-        </div>
-        <div id="teamsList" class="list-container"></div>
-      </div>
-    </div>
-    <div class="card">
-      <h2>🏎️ Пилоты</h2>
-      <div class="card-content">
-        <div class="form-group">
-          <div class="form-field"><label>Имя</label><input type="text" id="driverName" placeholder="Пилот"></div>
-          <div class="form-field"><label>Команда</label><select id="driverTeamSelect"></select></div>
-          <div class="form-field"><label>Рейтинг</label><input type="number" id="driverRating" min="1" max="10" value="6"></div>
-          <button id="addDriverBtn">➕</button>
-        </div>
-        <div id="driversList" class="list-container"></div>
-      </div>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2 id="raceResultsTitle">🏁 Последняя гонка</h2>
-    <div class="card-content">
-      <div id="polePositionDisplay" class="pole-info">🏁 Поул-позиция: —</div>
-      <table class="compact-table" id="lastRaceResultsTable">
-        <thead><tr><th>Поз</th><th>Пилот</th><th>Команда</th><th>Очки</th></tr></thead>
-        <tbody id="lastRaceTbody"><tr><td colspan="4" style="text-align:center;">Нет данных</td></tr></tbody>
-      </table>
-    </div>
-  </div>
-
-  <button id="simulateRaceBtn" class="full-width-btn">🏁 СИМУЛИРОВАТЬ ГОНКУ 🏁</button>
-
-  <div class="card">
-    <h2>📊 Личный зачёт</h2>
-    <div class="card-content wiki-table-wrapper">
-      <table class="wiki-table" id="wikiResultsTable">
-        <thead id="wikiHeader"></thead>
-        <tbody id="wikiBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>🏆 Кубок конструкторов</h2>
-    <div class="card-content wiki-table-wrapper">
-      <table class="teams-history-table" id="teamsHistoryTable">
-        <thead id="teamsHistoryHeader"></thead>
-        <tbody id="teamsHistoryBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="card" id="manufacturerCard" style="display:none;">
-    <h2>🏭 Производители</h2>
-    <div class="card-content wiki-table-wrapper">
-      <table class="manufacturers-history-table" id="manufacturersHistoryTable">
-        <thead id="manufacturersHistoryHeader"></thead>
-        <tbody id="manufacturersHistoryBody"></tbody>
-      </table>
-    </div>
-  </div>
-
-  <div class="card">
-    <h2>⚙️ Система очков</h2>
-    <div class="card-content">
-      <div class="points-config">
-        <h3>Настройка начисления</h3>
-        <div style="overflow-x: auto;">
-          <table class="points-table" id="pointsEditorTable">
-            <thead><tr><th>Место</th><th>Очки</th><th></th></tr></thead>
-            <tbody id="pointsEditorTbody"></tbody>
-            <tfoot><tr><td colspan="3"><button id="addPointsRowBtn" style="background:rgba(0,0,0,0.3); border:1px solid var(--border); color:var(--text-secondary);">+ Добавить место</button></td></tfoot>
-          </table>
-        </div>
-        <button id="applyPointsBtn" style="margin-top: 1rem; width: 100%;">💾 Применить систему</button>
-      </div>
-    </div>
-  </div>
+<button id="backToSeasonBtn" class="back-btn">← Назад к сезонам</button>
+<div class="f1-header">
+<h1 id="simulatorTitle">🏆 ФОРМУЛА-1 · СЕЗОН 2026 🏆</h1>
+<div style="display: flex; justify-content: center; gap: 1rem; align-items: center; margin-top: 0.8rem; flex-wrap: wrap;">
+<div class="race-progress" id="raceProgress">Гонка 0 / 0</div>
+<button id="resetSeasonBtn" style="background:var(--bg-glass); border:1px solid var(--border); color:var(--text-secondary);">🔄 Сброс сезона</button>
 </div>
-
+</div>
+<div class="grid-2col">
+<div class="card">
+<h2>🏢 Команды</h2>
+<div class="card-content">
+<div class="form-group">
+<div class="form-field"><label>Название</label><input type="text" id="teamName" placeholder="Новая команда"></div>
+<div class="form-field"><label>Двигатель</label><input type="number" id="teamEngine" min="1" max="10" value="7"></div>
+<div class="form-field"><label>Аэро</label><input type="number" id="teamAero" min="1" max="10" value="7"></div>
+<div class="form-field"><label>Надёжность</label><input type="number" id="teamReliability" min="1" max="10" value="7"></div>
+<button id="addTeamBtn">➕</button>
+</div>
+<div id="teamsList" class="list-container"></div>
+</div>
+</div>
+<div class="card">
+<h2>🏎️ Пилоты</h2>
+<div class="card-content">
+<div class="form-group">
+<div class="form-field"><label>Имя</label><input type="text" id="driverName" placeholder="Пилот"></div>
+<div class="form-field"><label>Команда</label><select id="driverTeamSelect"></select></div>
+<div class="form-field"><label>Рейтинг</label><input type="number" id="driverRating" min="1" max="10" value="6"></div>
+<button id="addDriverBtn">➕</button>
+</div>
+<div id="driversList" class="list-container"></div>
+</div>
+</div>
+</div>
+<div class="card">
+<h2 id="raceResultsTitle">🏁 Последняя гонка</h2>
+<div class="card-content">
+<div id="polePositionDisplay" class="pole-info">🏁 Поул-позиция: —</div>
+<table class="compact-table" id="lastRaceResultsTable">
+<thead><tr><th>Поз</th><th>Пилот</th><th>Команда</th><th>Очки</th></tr></thead>
+<tbody id="lastRaceTbody"><tr><td colspan="4" style="text-align:center;">Нет данных</tbody>
+</table>
+</div>
+</div>
+<button id="simulateRaceBtn" class="full-width-btn">🏁 СИМУЛИРОВАТЬ ГОНКУ 🏁</button>
+<div class="card">
+<h2>📊 Личный зачёт</h2>
+<div class="card-content wiki-table-wrapper">
+<table class="wiki-table" id="wikiResultsTable">
+<thead id="wikiHeader"></thead>
+<tbody id="wikiBody"></tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h2>🏆 Кубок конструкторов</h2>
+<div class="card-content wiki-table-wrapper">
+<table class="teams-history-table" id="teamsHistoryTable">
+<thead id="teamsHistoryHeader"></thead>
+<tbody id="teamsHistoryBody"></tbody>
+</table>
+</div>
+</div>
+<div class="card" id="manufacturerCard" style="display:none;">
+<h2>🏭 Производители</h2>
+<div class="card-content wiki-table-wrapper">
+<table class="manufacturers-history-table" id="manufacturersHistoryTable">
+<thead id="manufacturersHistoryHeader"></thead>
+<tbody id="manufacturersHistoryBody"></tbody>
+</table>
+</div>
+</div>
+<div class="card">
+<h2>⚙️ Система очков</h2>
+<div class="card-content">
+<div class="points-config">
+<h3>Настройка начисления</h3>
+<div style="overflow-x: auto;">
+<table class="points-table" id="pointsEditorTable">
+<thead><tr><th>Место</th><th>Очки</th><th></th></tr></thead>
+<tbody id="pointsEditorTbody"></tbody>
+<tfoot><tr><td colspan="3"><button id="addPointsRowBtn" style="background:rgba(0,0,0,0.3); border:1px solid var(--border); color:var(--text-secondary);">+ Добавить место</button></td></tfoot>
+</table>
+</div>
+<button id="applyPointsBtn" style="margin-top: 1rem; width: 100%;">💾 Применить систему</button>
+</div>
+</div>
+</div>
+</div>
 <script>
 let currentMode = 'f1';
 let teams = []; let drivers = []; let driverPoints = {}; let constructorPoints = {};
@@ -795,529 +738,507 @@ let lastRaceTeamPoints = {}; let lastPoleSitter = null;
 let motogpSprintPoints = [12, 9, 7, 6, 5, 4, 3, 2, 1];
 let manufacturerPoints = {}; let sprintHistory = [];
 let teamRaceHistory = []; let manufacturerRaceHistory = [];
-
 function generateId() { return Date.now() + '-' + Math.random().toString(36).substr(2, 8); }
 function escapeHtml(str) { return String(str).replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'})[m]); }
 function getTeamOverallRating(team) { return (team.engine + team.aero + team.reliability) / 3; }
-
 function syncPoints() {
-  drivers.forEach(d => { if(driverPoints[d.id] === undefined) driverPoints[d.id] = 0; });
-  Object.keys(driverPoints).forEach(dId => { if(!drivers.some(d => d.id === dId)) delete driverPoints[dId]; });
-  teams.forEach(t => { if(constructorPoints[t.id] === undefined) constructorPoints[t.id] = 0; });
-  Object.keys(constructorPoints).forEach(tId => { if(!teams.some(t => t.id === tId)) delete constructorPoints[tId]; });
+drivers.forEach(d => { if(driverPoints[d.id] === undefined) driverPoints[d.id] = 0; });
+Object.keys(driverPoints).forEach(dId => { if(!drivers.some(d => d.id === dId)) delete driverPoints[dId]; });
+teams.forEach(t => { if(constructorPoints[t.id] === undefined) constructorPoints[t.id] = 0; });
+Object.keys(constructorPoints).forEach(tId => { if(!teams.some(t => t.id === tId)) delete constructorPoints[tId]; });
 }
-
 function renderPointsEditor() {
-  const tbody = document.getElementById('pointsEditorTbody');
-  if (!tbody) return;
-  let html = '';
-  for (let i = 0; i < pointsTable.length; i++) {
-    html += `<tr><td style="width:75px;">${i+1}</td><td><input type="number" class="points-input" data-pos="${i}" value="${pointsTable[i]}" step="1" min="0" style="width:70px;"></td><td><button class="remove-points-row" data-row="${i}" style="background:var(--danger); padding:0.25rem 0.6rem;">✖</button></td></tr>`;
-  }
-  tbody.innerHTML = html;
-  document.querySelectorAll('.remove-points-row').forEach(btn => btn.addEventListener('click', (e) => {
-    const idx = parseInt(btn.dataset.row);
-    if (!isNaN(idx) && pointsTable.length > 1) { pointsTable.splice(idx, 1); renderPointsEditor(); }
-    else if (pointsTable.length === 1) alert("Нельзя удалить последнее место");
-  }));
+const tbody = document.getElementById('pointsEditorTbody');
+if (!tbody) return;
+let html = '';
+for (let i = 0; i < pointsTable.length; i++) {
+html += `<tr><td style="width:75px;">${i+1}</td><td><input type="number" class="points-input" data-pos="${i}" value="${pointsTable[i]}" step="1" min="0" style="width:70px;"></td><td><button class="remove-points-row" data-row="${i}" style="background:var(--danger); padding:0.25rem 0.6rem;">✖</button></td></tr>`;
 }
-
+tbody.innerHTML = html;
+document.querySelectorAll('.remove-points-row').forEach(btn => btn.addEventListener('click', (e) => {
+const idx = parseInt(btn.dataset.row);
+if (!isNaN(idx) && pointsTable.length > 1) { pointsTable.splice(idx, 1); renderPointsEditor(); }
+else if (pointsTable.length === 1) alert("Нельзя удалить последнее место");
+}));
+}
 function applyPointsFromEditor() {
-  const inputs = document.querySelectorAll('.points-input');
-  const newPoints = [];
-  for (let input of inputs) { let val = parseInt(input.value); if (isNaN(val)) val = 0; newPoints.push(val); }
-  if (newPoints.length === 0) newPoints.push(0);
-  pointsTable = newPoints;
-  renderPointsEditor();
-  alert(`Система очков обновлена (${pointsTable.length} мест)`);
+const inputs = document.querySelectorAll('.points-input');
+const newPoints = [];
+for (let input of inputs) { let val = parseInt(input.value); if (isNaN(val)) val = 0; newPoints.push(val); }
+if (newPoints.length === 0) newPoints.push(0);
+pointsTable = newPoints;
+renderPointsEditor();
+alert(`Система очков обновлена (${pointsTable.length} мест)`);
 }
-
 function addPointsRow() { pointsTable.push(0); renderPointsEditor(); }
-
 function updateRaceResultsHeader() {
-  const headerEl = document.getElementById('raceResultsTitle');
-  if (totalSeasonRaces > 0) headerEl.innerHTML = `🏁 Гонка ${completedRaces} из ${totalSeasonRaces} 🏁`;
-  else headerEl.innerHTML = `🏁 Гонка ${completedRaces} 🏁`;
+const headerEl = document.getElementById('raceResultsTitle');
+if (totalSeasonRaces > 0) headerEl.innerHTML = `🏁 Гонка ${completedRaces} из ${totalSeasonRaces} 🏁`;
+else headerEl.innerHTML = `🏁 Гонка ${completedRaces} 🏁`;
 }
-
 function renderLastRaceResults() {
-  const tbody = document.getElementById('lastRaceTbody');
-  const poleDiv = document.getElementById('polePositionDisplay');
-  if (!lastRaceResults.length) {
-    tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Нет данных</td></tr>';
-    poleDiv.innerHTML = '🏁 Поул-позиция: —';
-    updateRaceResultsHeader(); return;
-  }
-  tbody.innerHTML = lastRaceResults.map(res => `<tr><td class="pos">${res.position}</td><td>${escapeHtml(res.driverName)}</td><td>${escapeHtml(res.teamName)}</td><td class="points">+${res.points}</td></tr>`).join('');
-  if (lastPoleSitter) poleDiv.innerHTML = `🏁 Поул-позиция: ${escapeHtml(lastPoleSitter.name)} (${escapeHtml(lastPoleSitter.teamName)}) 🏁`;
-  else poleDiv.innerHTML = '🏁 Поул-позиция: —';
-  updateRaceResultsHeader();
+const tbody = document.getElementById('lastRaceTbody');
+const poleDiv = document.getElementById('polePositionDisplay');
+if (!lastRaceResults.length) {
+tbody.innerHTML = '<tr><td colspan="4" style="text-align:center;">Нет данных</td></tr>';
+poleDiv.innerHTML = '🏁 Поул-позиция: —';
+updateRaceResultsHeader(); return;
 }
-
+tbody.innerHTML = lastRaceResults.map(res => `<tr><td class="pos">${res.position}</td><td>${escapeHtml(res.driverName)}</td><td>${escapeHtml(res.teamName)}</td><td class="points">+${res.points}</td></tr>`).join('');
+if (lastPoleSitter) poleDiv.innerHTML = `🏁 Поул-позиция: ${escapeHtml(lastPoleSitter.name)} (${escapeHtml(lastPoleSitter.teamName)}) 🏁`;
+else poleDiv.innerHTML = '🏁 Поул-позиция: —';
+updateRaceResultsHeader();
+}
 function renderTeamsHistoryTable() {
-  const thead = document.getElementById('teamsHistoryHeader');
-  const tbody = document.getElementById('teamsHistoryBody');
-  if (!teams.length) { thead.innerHTML = ''; tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Нет команд</td></tr>'; return; }
-  const maxRaces = totalSeasonRaces > 0 ? totalSeasonRaces : Math.max(seasonHistory.length, teamRaceHistory.length);
-  let headerHtml = `<tr><th>Поз</th><th>Команда</th>`;
-  for (let i = 1; i <= maxRaces; i++) headerHtml += `<th>Г${i}</th>`;
-  headerHtml += `<th style="background:linear-gradient(135deg, var(--accent-red), #c40500);">ОЧКИ</th></tr>`;
-  thead.innerHTML = headerHtml;
-  const sortedTeams = [...teams].sort((a,b) => (constructorPoints[b.id]||0) - (constructorPoints[a.id]||0));
-  let bodyHtml = '';
-  
-  // Проверяем чемпиона среди команд
-  let championTeamId = null;
-  if (totalSeasonRaces > 0 && seasonHistory.length > 0 && sortedTeams.length > 0) {
-    const topTeam = sortedTeams[0];
-    if (isTeamChampion(topTeam.id, sortedTeams)) {
-      championTeamId = topTeam.id;
+const thead = document.getElementById('teamsHistoryHeader');
+const tbody = document.getElementById('teamsHistoryBody');
+if (!teams.length) { thead.innerHTML = ''; tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Нет команд</td></tr>'; return; }
+const maxRaces = totalSeasonRaces > 0 ? totalSeasonRaces : Math.max(seasonHistory.length, teamRaceHistory.length);
+let headerHtml = `<tr><th>Поз</th><th>Команда</th>`;
+for (let i = 1; i <= maxRaces; i++) {
+    let flagText = `Г${i}`;
+    if (window.seasonCalendar && window.seasonCalendar[i-1]) {
+        flagText = window.seasonCalendar[i-1];
     }
-  }
-  
-  sortedTeams.forEach((team, idx) => {
-    const totalPoints = constructorPoints[team.id] || 0;
-    const isChampion = (team.id === championTeamId);
-    const rowClass = isChampion ? 'champion-row' : '';
-    bodyHtml += `<tr class="${rowClass}">`;
-    const posContent = isChampion ? `C` : idx + 1;
-    bodyHtml += `<td style="text-align:center; font-weight:bold;">${posContent}</td>`;
-    bodyHtml += `<td style="text-align:left;">${escapeHtml(team.name)}</td>`;
-    for (let raceIdx = 0; raceIdx < maxRaces; raceIdx++) {
-      if (raceIdx < teamRaceHistory.length && teamRaceHistory[raceIdx][team.id] !== undefined) {
-        const pts = teamRaceHistory[raceIdx][team.id];
-        bodyHtml += pts > 0 ? `<td class="points-cell" style="font-weight:600;">${pts}</td>` : `<td style="color:var(--text-muted);">▪</td>`;
-      } else { bodyHtml += `<td style="color:var(--text-muted);">▪</td>`; }
-    }
-    // Очки чемпиона золотым цветом
-    const pointsClass = isChampion ? 'total-points' : 'total-points';
-    const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
-    bodyHtml += `<td class="${pointsClass}" style="color:${pointsColor}; text-shadow:${isChampion ? '0 0 10px rgba(255,215,0,0.6)' : '0 0 10px rgba(251,191,36,0.3)'}">${totalPoints}</td></tr>`;
-  });
-  tbody.innerHTML = bodyHtml;
+    headerHtml += `<th><span style="font-size:1.5rem;line-height:1;">${flagText}</span></th>`;
 }
-
+headerHtml += `<th style="background:linear-gradient(135deg, var(--accent-red), #c40500);">ОЧКИ</th></tr>`;
+thead.innerHTML = headerHtml;
+const sortedTeams = [...teams].sort((a,b) => (constructorPoints[b.id]||0) - (constructorPoints[a.id]||0));
+let bodyHtml = '';
+let championTeamId = null;
+if (totalSeasonRaces > 0 && seasonHistory.length > 0 && sortedTeams.length > 0) {
+const topTeam = sortedTeams[0];
+if (isTeamChampion(topTeam.id, sortedTeams)) championTeamId = topTeam.id;
+}
+sortedTeams.forEach((team, idx) => {
+const totalPoints = constructorPoints[team.id] || 0;
+const isChampion = (team.id === championTeamId);
+const rowClass = isChampion ? 'champion-row' : '';
+bodyHtml += `<tr class="${rowClass}">`;
+const posContent = isChampion ? `C` : idx + 1;
+bodyHtml += `<td style="text-align:center; font-weight:bold;">${posContent}</td>`;
+bodyHtml += `<td style="text-align:left;">${escapeHtml(team.name)}</td>`;
+for (let raceIdx = 0; raceIdx < maxRaces; raceIdx++) {
+if (raceIdx < teamRaceHistory.length && teamRaceHistory[raceIdx][team.id] !== undefined) {
+const pts = teamRaceHistory[raceIdx][team.id];
+bodyHtml += pts > 0 ? `<td class="points-cell" style="font-weight:600;">${pts}</td>` : `<td style="color:var(--text-muted);">▪</td>`;
+} else { bodyHtml += `<td style="color:var(--text-muted);">▪</td>`; }
+}
+const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
+bodyHtml += `<td class="total-points" style="color:${pointsColor}; text-shadow:${isChampion ? '0 0 10px rgba(255,215,0,0.6)' : '0 0 10px rgba(251,191,36,0.3)'}">${totalPoints}</td></tr>`;
+});
+tbody.innerHTML = bodyHtml;
+}
 function renderManufacturersHistoryTable() {
-  const thead = document.getElementById('manufacturersHistoryHeader');
-  const tbody = document.getElementById('manufacturersHistoryBody');
-  if (!thead || !tbody) return;
-  if (currentMode !== 'motogp') { thead.innerHTML = ''; tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Доступно только для MotoGP</td></tr>'; return; }
-  if (Object.keys(manufacturerPoints).length === 0) { thead.innerHTML = ''; tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Нет данных</td></tr>'; return; }
-  const maxRaces = totalSeasonRaces > 0 ? totalSeasonRaces : Math.max(seasonHistory.length, manufacturerRaceHistory.length);
-  let headerHtml = `<tr><th>Поз</th><th>Производитель</th>`;
-  for (let i = 1; i <= maxRaces; i++) headerHtml += `<th>Г${i}</th>`;
-  headerHtml += `<th style="background:linear-gradient(135deg, var(--accent-red), #c40500);">ОЧКИ</th></tr>`;
-  thead.innerHTML = headerHtml;
-  const sortedManufacturers = Object.entries(manufacturerPoints).sort((a, b) => b[1] - a[1]);
-  let bodyHtml = '';
-  
-  // Проверяем чемпиона среди производителей
-  let championManufacturer = null;
-  if (totalSeasonRaces > 0 && seasonHistory.length > 0 && sortedManufacturers.length > 0) {
-    const topMfr = sortedManufacturers[0][0];
-    if (isManufacturerChampion(topMfr, sortedManufacturers)) {
-      championManufacturer = topMfr;
+const thead = document.getElementById('manufacturersHistoryHeader');
+const tbody = document.getElementById('manufacturersHistoryBody');
+if (!thead || !tbody) return;
+if (currentMode !== 'motogp') { thead.innerHTML = ''; tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Доступно только для MotoGP</td></tr>'; return; }
+if (Object.keys(manufacturerPoints).length === 0) { thead.innerHTML = ''; tbody.innerHTML = '<tr><td colspan="3" style="text-align:center;">Нет данных</td></tr>'; return; }
+const maxRaces = totalSeasonRaces > 0 ? totalSeasonRaces : Math.max(seasonHistory.length, manufacturerRaceHistory.length);
+let headerHtml = `<tr><th>Поз</th><th>Производитель</th>`;
+for (let i = 1; i <= maxRaces; i++) {
+    let flagText = `Г${i}`;
+    if (window.seasonCalendar && window.seasonCalendar[i-1]) {
+        flagText = window.seasonCalendar[i-1];
     }
-  }
-  
-  sortedManufacturers.forEach(([mfr, totalPts], idx) => {
-    const isChampion = (mfr === championManufacturer);
-    const rowClass = isChampion ? 'champion-row' : '';
-    bodyHtml += `<tr class="${rowClass}">`;
-    const posContent = isChampion ? `C` : idx + 1;
-    bodyHtml += `<td style="text-align:center; font-weight:bold;">${posContent}</td>`;
-    bodyHtml += `<td style="text-align:left;">${escapeHtml(mfr)}</td>`;
-    for (let raceIdx = 0; raceIdx < maxRaces; raceIdx++) {
-      if (raceIdx < manufacturerRaceHistory.length && manufacturerRaceHistory[raceIdx][mfr] !== undefined) {
-        const pts = manufacturerRaceHistory[raceIdx][mfr];
-        bodyHtml += pts > 0 ? `<td class="points-cell" style="font-weight:600;">${pts}</td>` : `<td style="color:var(--text-muted);">▪</td>`;
-      } else { bodyHtml += `<td style="color:var(--text-muted);">▪</td>`; }
-    }
-    // Очки чемпиона золотым цветом
-    const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
-    bodyHtml += `<td class="total-points" style="color:${pointsColor}; text-shadow:${isChampion ? '0 0 10px rgba(255,215,0,0.6)' : '0 0 10px rgba(251,191,36,0.3)'}">${totalPts}</td></tr>`;
-  });
-  tbody.innerHTML = bodyHtml;
+    headerHtml += `<th><span style="font-size:1.5rem;line-height:1;">${flagText}</span></th>`;
 }
-
+headerHtml += `<th style="background:linear-gradient(135deg, var(--accent-red), #c40500);">ОЧКИ</th></tr>`;
+thead.innerHTML = headerHtml;
+const sortedManufacturers = Object.entries(manufacturerPoints).sort((a, b) => b[1] - a[1]);
+let bodyHtml = '';
+let championManufacturer = null;
+if (totalSeasonRaces > 0 && seasonHistory.length > 0 && sortedManufacturers.length > 0) {
+const topMfr = sortedManufacturers[0][0];
+if (isManufacturerChampion(topMfr, sortedManufacturers)) championManufacturer = topMfr;
+}
+sortedManufacturers.forEach(([mfr, totalPts], idx) => {
+const isChampion = (mfr === championManufacturer);
+const rowClass = isChampion ? 'champion-row' : '';
+bodyHtml += `<tr class="${rowClass}">`;
+const posContent = isChampion ? `C` : idx + 1;
+bodyHtml += `<td style="text-align:center; font-weight:bold;">${posContent}</td>`;
+bodyHtml += `<td style="text-align:left;">${escapeHtml(mfr)}</td>`;
+for (let raceIdx = 0; raceIdx < maxRaces; raceIdx++) {
+if (raceIdx < manufacturerRaceHistory.length && manufacturerRaceHistory[raceIdx][mfr] !== undefined) {
+const pts = manufacturerRaceHistory[raceIdx][mfr];
+bodyHtml += pts > 0 ? `<td class="points-cell" style="font-weight:600;">${pts}</td>` : `<td style="color:var(--text-muted);">▪</td>`;
+} else { bodyHtml += `<td style="color:var(--text-muted);">▪</td>`; }
+}
+const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
+bodyHtml += `<td class="total-points" style="color:${pointsColor}; text-shadow:${isChampion ? '0 0 10px rgba(255,215,0,0.6)' : '0 0 10px rgba(251,191,36,0.3)'}">${totalPts}</td></tr>`;
+});
+tbody.innerHTML = bodyHtml;
+}
 function getSortedDriversWithStats() {
-  const driversWithStats = drivers.map(d => {
-    let bestPos = Infinity, wins = 0;
-    for (let race of seasonHistory) { let pos = race[d.id]; if (pos && pos !== '—' && typeof pos === 'number') { if (pos < bestPos) bestPos = pos; if (pos === 1) wins++; } }
-    return { id: d.id, name: d.name, teamId: d.teamId, points: driverPoints[d.id] || 0, bestPos: bestPos === Infinity ? 999 : bestPos, wins };
-  });
-  driversWithStats.sort((a,b) => { if (a.points !== b.points) return b.points - a.points; if (a.bestPos !== b.bestPos) return a.bestPos - b.bestPos; return b.wins - a.wins; });
-  return driversWithStats;
+const driversWithStats = drivers.map(d => {
+let bestPos = Infinity, wins = 0;
+for (let race of seasonHistory) { let pos = race[d.id]; if (pos && pos !== '—' && typeof pos === 'number') { if (pos < bestPos) bestPos = pos; if (pos === 1) wins++; } }
+return { id: d.id, name: d.name, teamId: d.teamId, points: driverPoints[d.id] || 0, bestPos: bestPos === Infinity ? 999 : bestPos, wins };
+});
+driversWithStats.sort((a,b) => { if (a.points !== b.points) return b.points - a.points; if (a.bestPos !== b.bestPos) return a.bestPos - b.bestPos; return b.wins - a.wins; });
+return driversWithStats;
 }
-
 function isMathematicalChampion(driverId, sortedDriversStats) {
-  if (totalSeasonRaces === 0) return false;
-  const remainingRaces = totalSeasonRaces - seasonHistory.length;
-  if (remainingRaces === 0) return sortedDriversStats[0]?.id === driverId;
-  const maxPointsPerRace = pointsTable[0] || 25;
-  const driverPointsVal = driverPoints[driverId] || 0;
-  let secondBestPoints = 0;
-  for (let ds of sortedDriversStats) if (ds.id !== driverId && ds.points > secondBestPoints) secondBestPoints = ds.points;
-  return driverPointsVal > secondBestPoints + (remainingRaces * maxPointsPerRace);
+if (totalSeasonRaces === 0) return false;
+const remainingRaces = totalSeasonRaces - seasonHistory.length;
+if (remainingRaces === 0) return sortedDriversStats[0]?.id === driverId;
+const maxPointsPerRace = pointsTable[0] || 25;
+const driverPointsVal = driverPoints[driverId] || 0;
+let secondBestPoints = 0;
+for (let ds of sortedDriversStats) if (ds.id !== driverId && ds.points > secondBestPoints) secondBestPoints = ds.points;
+return driverPointsVal > secondBestPoints + (remainingRaces * maxPointsPerRace);
 }
-
 function isTeamChampion(teamId, sortedTeams) {
-  if (totalSeasonRaces === 0) return false;
-  const remainingRaces = totalSeasonRaces - seasonHistory.length;
-  if (remainingRaces === 0) return sortedTeams[0]?.id === teamId;
-  const maxPointsPerRace = pointsTable[0] * 2 || 50; // Максимум 2 пилота × очки за 1 место
-  const teamPointsVal = constructorPoints[teamId] || 0;
-  let secondBestPoints = 0;
-  for (let t of sortedTeams) if (t.id !== teamId && (constructorPoints[t.id]||0) > secondBestPoints) secondBestPoints = constructorPoints[t.id]||0;
-  return teamPointsVal > secondBestPoints + (remainingRaces * maxPointsPerRace);
+if (totalSeasonRaces === 0) return false;
+const remainingRaces = totalSeasonRaces - seasonHistory.length;
+if (remainingRaces === 0) return sortedTeams[0]?.id === teamId;
+const maxPointsPerRace = pointsTable[0] * 2 || 50;
+const teamPointsVal = constructorPoints[teamId] || 0;
+let secondBestPoints = 0;
+for (let t of sortedTeams) if (t.id !== teamId && (constructorPoints[t.id]||0) > secondBestPoints) secondBestPoints = constructorPoints[t.id]||0;
+return teamPointsVal > secondBestPoints + (remainingRaces * maxPointsPerRace);
 }
-
 function isManufacturerChampion(mfr, sortedManufacturers) {
-  if (totalSeasonRaces === 0) return false;
-  const remainingRaces = totalSeasonRaces - seasonHistory.length;
-  if (remainingRaces === 0) return sortedManufacturers[0]?.[0] === mfr;
-  const maxPointsPerRace = pointsTable[0] * 2 || 50; // Максимум 2 пилота × очки за 1 место
-  const mfrPointsVal = manufacturerPoints[mfr] || 0;
-  let secondBestPoints = 0;
-  for (let m of sortedManufacturers) if (m[0] !== mfr && m[1] > secondBestPoints) secondBestPoints = m[1];
-  return mfrPointsVal > secondBestPoints + (remainingRaces * maxPointsPerRace);
+if (totalSeasonRaces === 0) return false;
+const remainingRaces = totalSeasonRaces - seasonHistory.length;
+if (remainingRaces === 0) return sortedManufacturers[0]?.[0] === mfr;
+const maxPointsPerRace = pointsTable[0] * 2 || 50;
+const mfrPointsVal = manufacturerPoints[mfr] || 0;
+let secondBestPoints = 0;
+for (let m of sortedManufacturers) if (m[0] !== mfr && m[1] > secondBestPoints) secondBestPoints = m[1];
+return mfrPointsVal > secondBestPoints + (remainingRaces * maxPointsPerRace);
 }
-
 function renderWikipediaTable() {
-  const headerRow = document.getElementById('wikiHeader');
-  const bodyTable = document.getElementById('wikiBody');
-  if (!headerRow || !bodyTable) return;
-  const driversStats = getSortedDriversWithStats();
-  const maxRaces = totalSeasonRaces > 0 ? totalSeasonRaces : seasonHistory.length;
-  let championId = null;
-  if (totalSeasonRaces > 0 && seasonHistory.length > 0) {
-    const topDriver = driversStats[0];
-    if (topDriver && isMathematicalChampion(topDriver.id, driversStats)) championId = topDriver.id;
-  }
-  let headerHtml = `<tr><th>Поз</th><th>Пилот</th><th>Команда</th>`;
-  for (let i = 1; i <= maxRaces; i++) headerHtml += `<th style="min-width:45px;">Г${i}</th>`;
-  headerHtml += `<th style="background:linear-gradient(135deg, var(--accent-red), #c40500);">ОЧКИ</th></tr>`;
-  headerRow.innerHTML = headerHtml;
-  let bodyHtml = '';
-  for (let idx = 0; idx < driversStats.length; idx++) {
-    const ds = driversStats[idx];
-    const driver = drivers.find(d => d.id === ds.id);
-    const team = teams.find(t => t.id === driver.teamId);
-    const teamName = team ? team.name : '—';
-    const totalPts = driverPoints[driver.id] || 0;
-    const isChampion = (driver.id === championId);
-    const rowClass = isChampion ? 'champion-row' : '';
-    let row = `<tr class="${rowClass}">`;
-    const posContent = isChampion ? `C` : idx+1;
-    row += `<td style="text-align:center; font-weight:bold;">${posContent}</td>`;
-    row += `<td style="text-align:left;">${escapeHtml(driver.name)}</td>`;
-    row += `<td style="text-align:left;">${escapeHtml(teamName)}</td>`;
-    for (let raceIdx = 0; raceIdx < maxRaces; raceIdx++) {
-      let raceDisplay = '', sprintDisplay = '', cellClass = 'race-cell';
-      if (raceIdx < seasonHistory.length && seasonHistory[raceIdx] && seasonHistory[raceIdx][driver.id] !== undefined) {
-        let pos = seasonHistory[raceIdx][driver.id];
-        if (pos === '—') { raceDisplay = '—'; cellClass += ' dnf-cell'; }
-        else { raceDisplay = pos;
-          if (pos === 1) cellClass += ' podium-1';
-          else if (pos === 2) cellClass += ' podium-2';
-          else if (pos === 3) cellClass += ' podium-3';
-          else { let idxPos = pos - 1; let hasPoints = (idxPos < pointsTable.length && pointsTable[idxPos] > 0); 
-                cellClass += hasPoints ? ' points-cell-bg' : ' non-points-cell'; }
-        }
-      } else { raceDisplay = '▪'; }
-      if (currentMode === 'motogp' && currentSeasonYear >= 2023 && raceIdx < sprintHistory.length && sprintHistory[raceIdx] && sprintHistory[raceIdx][driver.id] !== undefined) {
-        let sprintPos = sprintHistory[raceIdx][driver.id];
-        if (sprintPos !== '—' && sprintPos <= 9) sprintDisplay = `<span style="font-size:0.6rem; opacity:0.9; margin-left:4px;">${sprintPos}</span>`;
-      }
-      let content = `<div style="display:flex; align-items:center; justify-content:center; gap:4px;">${raceDisplay}${sprintDisplay}</div>`;
-      const hasPole = (poleHistory[raceIdx] === driver.id);
-      if (hasPole) content = `<div style="position:relative;">${content}<span class="pole-indicator">●</span></div>`;
-      row += `<td class="${cellClass}">${content}</td>`;
-    }
-    const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
-    row += `<td class="points-cell" style="font-weight:bold; color:${pointsColor}; text-shadow:${isChampion ? '0 0 10px rgba(255,215,0,0.6)' : '0 0 10px rgba(251,191,36,0.3)'}">${totalPts}</td></tr>`;
-    bodyHtml += row;
-  }
-  bodyTable.innerHTML = bodyHtml;
+const headerRow = document.getElementById('wikiHeader');
+const bodyTable = document.getElementById('wikiBody');
+const table = document.getElementById('wikiResultsTable');
+if (!headerRow || !bodyTable || !table) return;
+
+// Управляем классом motogp-table
+if (currentMode === 'motogp') {
+    table.classList.add('motogp-table');
+} else {
+    table.classList.remove('motogp-table');
 }
 
+const driversStats = getSortedDriversWithStats();
+const maxRaces = totalSeasonRaces > 0 ? totalSeasonRaces : seasonHistory.length;
+let championId = null;
+if (totalSeasonRaces > 0 && seasonHistory.length > 0) {
+const topDriver = driversStats[0];
+if (topDriver && isMathematicalChampion(topDriver.id, driversStats)) championId = topDriver.id;
+}
+
+// Генерация заголовка с учетом режима
+let headerHtml = `<tr><th>Поз</th><th>Пилот</th>`;
+if (currentMode === 'motogp') {
+    headerHtml += `<th>Bike</th><th>Команда</th>`;
+} else {
+    headerHtml += `<th>Команда</th>`;
+}
+for (let i = 1; i <= maxRaces; i++) {
+    const flag = (window.seasonCalendar && window.seasonCalendar[i-1]) ? window.seasonCalendar[i-1] : `Г${i}`;
+    headerHtml += `<th style="min-width:45px;">${flag}</th>`;
+}
+headerHtml += `<th style="background:linear-gradient(135deg, var(--accent-red), #c40500);">ОЧКИ</th></tr>`;
+headerRow.innerHTML = headerHtml;
+
+let bodyHtml = '';
+for (let idx = 0; idx < driversStats.length; idx++) {
+const ds = driversStats[idx];
+const driver = drivers.find(d => d.id === ds.id);
+const team = teams.find(t => t.id === driver.teamId);
+const teamName = team ? team.name : '—';
+const totalPts = driverPoints[driver.id] || 0;
+const isChampion = (driver.id === championId);
+const rowClass = isChampion ? 'champion-row' : '';
+let row = `<tr class="${rowClass}">`;
+const posContent = isChampion ? `C` : idx+1;
+row += `<td style="text-align:center; font-weight:bold;">${posContent}</td>`;
+row += `<td style="text-align:left;">${escapeHtml(driver.name)}</td>`;
+
+// Специфичная колонка Bike для MotoGP
+if (currentMode === 'motogp') {
+    const bikeName = team && team.manufacturer ? team.manufacturer : '—';
+    row += `<td style="text-align:left; font-size:0.85rem; color:var(--text-secondary);">${escapeHtml(bikeName)}</td>`;
+}
+
+row += `<td style="text-align:left;">${escapeHtml(teamName)}</td>`;
+for (let raceIdx = 0; raceIdx < maxRaces; raceIdx++) {
+let raceDisplay = '', sprintDisplay = '', cellClass = 'race-cell';
+if (raceIdx < seasonHistory.length && seasonHistory[raceIdx] && seasonHistory[raceIdx][driver.id] !== undefined) {
+let pos = seasonHistory[raceIdx][driver.id];
+if (pos === '—') { raceDisplay = '—'; cellClass += ' dnf-cell'; }
+else { raceDisplay = pos;
+if (pos === 1) cellClass += ' podium-1';
+else if (pos === 2) cellClass += ' podium-2';
+else if (pos === 3) cellClass += ' podium-3';
+else { let idxPos = pos - 1; let hasPoints = (idxPos < pointsTable.length && pointsTable[idxPos] > 0);
+cellClass += hasPoints ? ' points-cell-bg' : ' non-points-cell'; }
+}
+} else { raceDisplay = '▪'; }
+if (currentMode === 'motogp' && seasonHistory.length > raceIdx && raceIdx < sprintHistory.length && sprintHistory[raceIdx] && sprintHistory[raceIdx][driver.id] !== undefined) {
+let sprintPos = sprintHistory[raceIdx][driver.id];
+if (sprintPos !== '—' && sprintPos <= 9) sprintDisplay = `<span style="font-size:0.6rem; opacity:0.9; margin-left:4px;">${sprintPos}</span>`;
+}
+let content = `<div style="display:flex; align-items:center; justify-content:center; gap:4px;">${raceDisplay}${sprintDisplay}</div>`;
+const hasPole = (poleHistory[raceIdx] === driver.id);
+if (hasPole) content = `<div style="position:relative;">${content}<span class="pole-indicator">●</span></div>`;
+row += `<td class="${cellClass}">${content}</td>`;
+}
+const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
+row += `<td class="points-cell" style="font-weight:bold; color:${pointsColor}; text-shadow:${isChampion ? '0 0 10px rgba(255,215,0,0.6)' : '0 0 10px rgba(251,191,36,0.3)'}">${totalPts}</td></tr>`;
+bodyHtml += row;
+}
+bodyTable.innerHTML = bodyHtml;
+}
 function renderTeamsList() {
-  const container = document.getElementById('teamsList');
-  if(!teams.length) { container.innerHTML = '<div class="empty-msg">Нет команд</div>'; return; }
-  container.innerHTML = teams.map(team => `<div class="list-item"><div><div style="font-weight:600;">🏭 ${escapeHtml(team.name)}</div><div class="team-metrics"><span class="metric-badge">⚡ ${team.engine}</span><span class="metric-badge">🌬️ ${team.aero}</span><span class="metric-badge">🔧 ${team.reliability}</span><span class="metric-badge" style="color:var(--accent-red);">⭐ ${getTeamOverallRating(team).toFixed(1)}</span></div></div><div><button class="edit-team-btn" data-id="${team.id}" style="background:var(--bg-secondary);">✏️</button> <button class="delete-team-btn danger-btn" data-id="${team.id}">🗑</button></div></div>`).join('');
-  attachTeamEvents();
+const container = document.getElementById('teamsList');
+if(!teams.length) { container.innerHTML = '<div class="empty-msg">Нет команд</div>'; return; }
+container.innerHTML = teams.map(team => `<div class="list-item"><div><div style="font-weight:600;">🏭 ${escapeHtml(team.name)}</div><div class="team-metrics"><span class="metric-badge">⚡ ${team.engine}</span><span class="metric-badge">🌬️ ${team.aero}</span><span class="metric-badge">🔧 ${team.reliability}</span><span class="metric-badge" style="color:var(--accent-red);">⭐ ${getTeamOverallRating(team).toFixed(1)}</span></div></div><div><button class="edit-team-btn" data-id="${team.id}" style="background:var(--bg-secondary);">✏️</button> <button class="delete-team-btn danger-btn" data-id="${team.id}">🗑</button></div></div>`).join('');
+attachTeamEvents();
 }
-
 function attachTeamEvents() {
-  document.querySelectorAll('.edit-team-btn').forEach(btn => btn.addEventListener('click', () => editTeamDialog(btn.dataset.id)));
-  document.querySelectorAll('.delete-team-btn').forEach(btn => btn.addEventListener('click', () => deleteTeamById(btn.dataset.id)));
+document.querySelectorAll('.edit-team-btn').forEach(btn => btn.addEventListener('click', () => editTeamDialog(btn.dataset.id)));
+document.querySelectorAll('.delete-team-btn').forEach(btn => btn.addEventListener('click', () => deleteTeamById(btn.dataset.id)));
 }
-
 function renderDriversList() {
-  const container = document.getElementById('driversList');
-  if(!drivers.length) { container.innerHTML = '<div class="empty-msg">Нет пилотов</div>'; return; }
-  const teamMap = Object.fromEntries(teams.map(t => [t.id, t]));
-  container.innerHTML = drivers.map(driver => `<div class="list-item"><div><div>🏎️ ${escapeHtml(driver.name)}</div><div><span class="metric-badge">${teamMap[driver.teamId]?.name || '?'}</span> <span class="metric-badge" style="color:var(--accent-red);">⭐ ${driver.rating}</span></div></div><div><button class="edit-driver-btn" data-id="${driver.id}" style="background:var(--bg-secondary);">✏️</button> <button class="delete-driver-btn danger-btn" data-id="${driver.id}">🗑</button></div></div>`).join('');
-  document.querySelectorAll('.edit-driver-btn').forEach(btn => btn.addEventListener('click', () => editDriverDialog(btn.dataset.id)));
-  document.querySelectorAll('.delete-driver-btn').forEach(btn => btn.addEventListener('click', () => deleteDriverById(btn.dataset.id)));
+const container = document.getElementById('driversList');
+if(!drivers.length) { container.innerHTML = '<div class="empty-msg">Нет пилотов</div>'; return; }
+const teamMap = Object.fromEntries(teams.map(t => [t.id, t]));
+container.innerHTML = drivers.map(driver => `<div class="list-item"><div><div>🏎️ ${escapeHtml(driver.name)}</div><div><span class="metric-badge">${teamMap[driver.teamId]?.name || '?'}</span> <span class="metric-badge" style="color:var(--accent-red);">⭐ ${driver.rating}</span></div></div><div><button class="edit-driver-btn" data-id="${driver.id}" style="background:var(--bg-secondary);">✏️</button> <button class="delete-driver-btn danger-btn" data-id="${driver.id}">🗑</button></div></div>`).join('');
+document.querySelectorAll('.edit-driver-btn').forEach(btn => btn.addEventListener('click', () => editDriverDialog(btn.dataset.id)));
+document.querySelectorAll('.delete-driver-btn').forEach(btn => btn.addEventListener('click', () => deleteDriverById(btn.dataset.id)));
 }
-
 function updateDriverSelect() {
-  const select = document.getElementById('driverTeamSelect');
-  select.innerHTML = '<option value="" disabled selected>Выберите команду</option>' + teams.map(t => `<option value="${t.id}">${escapeHtml(t.name)}</option>`).join('');
+const select = document.getElementById('driverTeamSelect');
+select.innerHTML = '<option value="" disabled selected>Выберите команду</option>' + teams.map(t => `<option value="${t.id}">${escapeHtml(t.name)}</option>`).join('');
 }
-
 function editTeamDialog(id) {
-  let t = teams.find(t=>t.id===id); if(!t) return;
-  let n = prompt("Название", t.name); if(n?.trim()) t.name = n.trim();
-  let e = parseInt(prompt("Двигатель (1-10)", t.engine)); if(e>=1&&e<=10) t.engine = e;
-  let a = parseInt(prompt("Аэродинамика (1-10)", t.aero)); if(a>=1&&a<=10) t.aero = a;
-  let r = parseInt(prompt("Надёжность (1-10)", t.reliability)); if(r>=1&&r<=10) t.reliability = r;
-  renderAll();
+let t = teams.find(t=>t.id===id); if(!t) return;
+let n = prompt("Название", t.name); if(n?.trim()) t.name = n.trim();
+let e = parseInt(prompt("Двигатель (1-10)", t.engine)); if(e>=1&&e<=10) t.engine = e;
+let a = parseInt(prompt("Аэродинамика (1-10)", t.aero)); if(a>=1&&a<=10) t.aero = a;
+let r = parseInt(prompt("Надёжность (1-10)", t.reliability)); if(r>=1&&r<=10) t.reliability = r;
+renderAll();
 }
-
 function deleteTeamById(id) {
-  if(drivers.some(d=>d.teamId===id)) { alert("Сначала удалите пилотов"); return; }
-  teams = teams.filter(t=>t.id!==id); delete constructorPoints[id]; renderAll();
+if(drivers.some(d=>d.teamId===id)) { alert("Сначала удалите пилотов"); return; }
+teams = teams.filter(t=>t.id!==id); delete constructorPoints[id]; renderAll();
 }
-
 function addDriver(name, teamId, rating) {
-  if(!name.trim() || !teamId || !teams.some(t=>t.id===teamId) || rating<1||rating>10) { alert("Ошибка"); return false; }
-  drivers.push({ id: generateId(), name: name.trim(), teamId, rating });
-  driverPoints[drivers[drivers.length-1].id] = 0;
-  renderAll(); return true;
+if(!name.trim() || !teamId || !teams.some(t=>t.id===teamId) || rating<1||rating>10) { alert("Ошибка"); return false; }
+drivers.push({ id: generateId(), name: name.trim(), teamId, rating });
+driverPoints[drivers[drivers.length-1].id] = 0;
+renderAll(); return true;
 }
-
 function editDriverDialog(id) {
-  let d = drivers.find(d=>d.id===id); if(!d) return;
-  let n = prompt("Имя", d.name); if(n?.trim()) d.name = n.trim();
-  let r = parseInt(prompt("Рейтинг (1-10)", d.rating)); if(r>=1&&r<=10) d.rating = r;
-  let tid = prompt("ID команды:\n"+teams.map(t=>`${t.id} → ${t.name}`).join('\n'), d.teamId);
-  if(tid && teams.some(t=>t.id===tid)) d.teamId = tid;
-  renderAll();
+let d = drivers.find(d=>d.id===id); if(!d) return;
+let n = prompt("Имя", d.name); if(n?.trim()) d.name = n.trim();
+let r = parseInt(prompt("Рейтинг (1-10)", d.rating)); if(r>=1&&r<=10) d.rating = r;
+let tid = prompt("ID команды:\n"+teams.map(t=>`${t.id} → ${t.name}`).join('\n'), d.teamId);
+if(tid && teams.some(t=>t.id===tid)) d.teamId = tid;
+renderAll();
 }
-
 function deleteDriverById(id) {
-  let driver = drivers.find(d=>d.id===id);
-  if(driver && driver.teamId && constructorPoints[driver.teamId]!==undefined) {
-    let pts = driverPoints[id]||0;
-    if(pts>0) constructorPoints[driver.teamId] = Math.max(0, (constructorPoints[driver.teamId]||0) - pts);
-  }
-  delete driverPoints[id]; drivers = drivers.filter(d=>d.id!==id); renderAll();
+let driver = drivers.find(d=>d.id===id);
+if(driver && driver.teamId && constructorPoints[driver.teamId]!==undefined) {
+let pts = driverPoints[id]||0;
+if(pts>0) constructorPoints[driver.teamId] = Math.max(0, (constructorPoints[driver.teamId]||0) - pts);
 }
-
+delete driverPoints[id]; drivers = drivers.filter(d=>d.id!==id); renderAll();
+}
 function addTeam(name, engine, aero, reliability, manufacturer = null) {
-  if(!name.trim() || engine<1||engine>10 || aero<1||aero>10 || reliability<1||reliability>10) { alert("Ошибка"); return false; }
-  const team = { id: generateId(), name: name.trim(), engine, aero, reliability };
-  if (manufacturer) team.manufacturer = manufacturer;
-  teams.push(team);
-  constructorPoints[team.id] = 0;
-  renderAll(); return true;
+if(!name.trim() || engine<1||engine>10 || aero<1||aero>10 || reliability<1||reliability>10) { alert("Ошибка"); return false; }
+const team = { id: generateId(), name: name.trim(), engine, aero, reliability };
+if (manufacturer) team.manufacturer = manufacturer;
+teams.push(team);
+constructorPoints[team.id] = 0;
+renderAll(); return true;
 }
-
 function renderAll() {
-  renderTeamsList(); renderDriversList(); updateDriverSelect();
-  renderLastRaceResults(); renderWikipediaTable();
-  renderTeamsHistoryTable(); renderManufacturersHistoryTable();
-  updateRaceProgress();
-  const mfrCard = document.getElementById('manufacturerCard');
-  if(mfrCard) mfrCard.style.display = (currentMode === 'motogp') ? 'block' : 'none';
+renderTeamsList(); renderDriversList(); updateDriverSelect();
+renderLastRaceResults(); renderWikipediaTable();
+renderTeamsHistoryTable(); renderManufacturersHistoryTable();
+updateRaceProgress();
+const mfrCard = document.getElementById('manufacturerCard');
+if(mfrCard) mfrCard.style.display = (currentMode === 'motogp') ? 'block' : 'none';
 }
-
 function updateRaceProgress() {
-  const progressDiv = document.getElementById('raceProgress');
-  if (totalSeasonRaces > 0) {
-    let status = (completedRaces >= totalSeasonRaces) ? `✅ СЕЗОН ЗАВЕРШЁН` : `🏁 Гонка ${completedRaces+1} / ${totalSeasonRaces}`;
-    progressDiv.innerText = status;
-  } else { progressDiv.innerText = `∞ Кастомный режим`; }
+const progressDiv = document.getElementById('raceProgress');
+if (totalSeasonRaces > 0) {
+let status = (completedRaces >= totalSeasonRaces) ? `✅ СЕЗОН ЗАВЕРШЁН` : `🏁 Гонка ${completedRaces+1} / ${totalSeasonRaces}`;
+progressDiv.innerText = status;
+} else { progressDiv.innerText = `∞ Кастомный режим`; }
 }
-
 function simulateRace() {
-  if(drivers.length === 0) { alert("Нет пилотов"); return; }
-  if(teams.length === 0) { alert("Нет команд"); return; }
-  if(totalSeasonRaces > 0 && completedRaces >= totalSeasonRaces) { alert(`Сезон завершён! Сбросьте сезон.`); return; }
-  
-  // Проверяем, есть ли спринты в этом сезоне (только MotoGP с 2023 года)
-  const hasSprints = (currentMode === 'motogp' && currentSeasonYear >= 2023);
-  
-  const reliabilityMap = Object.fromEntries(teams.map(t => [t.id, t.reliability]));
-  const activeQual = [];
-  for (let driver of drivers) {
-    const teamRel = reliabilityMap[driver.teamId] || 5;
-    let qualSkipChance = (11 - teamRel) / (currentMode === 'fe' ? 18 : 22);
-    if (Math.random() < qualSkipChance) continue;
-    activeQual.push(driver);
-  }
-  
-  let poleDriver = null;
-  if (activeQual.length > 0) {
-    const qualPerf = activeQual.map(driver => {
-      const team = teams.find(t => t.id === driver.teamId);
-      const teamRating = team ? getTeamOverallRating(team) : 5;
-      let base = (driver.rating * 0.4) + (teamRating * 0.6);
-      if (currentMode === 'fe') {
-        let chaos = (Math.random() * 5) - 2.5;
-        if (Math.random() < 0.15) chaos += (Math.random() < 0.5 ? 3 : -3);
-        base += chaos;
-      } else {
-        let score = Math.max(0.5, base + (Math.random() * 1.2) - 0.6);
-        return { driver, score };
-      }
-      let score = Math.max(0.5, base);
-      return { driver, score };
-    });
-    qualPerf.sort((a,b) => b.score - a.score);
-    poleDriver = qualPerf[0].driver;
-  } else { poleDriver = drivers[Math.floor(Math.random() * drivers.length)]; }
-  
-  const poleTeam = teams.find(t => t.id === poleDriver.teamId);
-  lastPoleSitter = { name: poleDriver.name, teamName: poleTeam ? poleTeam.name : '—', driverId: poleDriver.id };
-  poleHistory[completedRaces] = poleDriver.id;
-
-  let sprintManufacturerBest = {}, raceManufacturerBest = {};
-  let currentTeamPoints = {}, currentManufacturerPoints = {};
-
-  // === ЛОГИКА СПРИНТОВ (только для MotoGP с 2023 года) ===
-  if (currentMode === 'motogp' && hasSprints) {
-    const activeSprint = [], dnfSprint = [];
-    for (let driver of drivers) {
-      const teamRel = reliabilityMap[driver.teamId] || 5;
-      let dnfChance = Math.min(0.65, (11 - teamRel) / 22 + Math.random() * 0.2);
-      if (Math.random() < dnfChance) dnfSprint.push(driver);
-      else activeSprint.push(driver);
-    }
-    let sprintOrder = [];
-    if (activeSprint.length > 0) {
-      const sprintPerf = activeSprint.map(driver => {
-        const team = teams.find(t => t.id === driver.teamId);
-        const teamRating = team ? getTeamOverallRating(team) : 5;
-        let base = (driver.rating * 0.4) + (teamRating * 0.6);
-        if (Math.random() < 0.15) base -= 1.2 + Math.random() * 0.8;
-        base = Math.max(0.5, base + (Math.random() * 1.6) - 0.6);
-        return { driver, score: base };
-      });
-      sprintPerf.sort((a,b) => b.score - a.score);
-      sprintOrder = sprintPerf.map(p => p.driver);
-    }
-    const sprintMap = {};
-    sprintOrder.forEach((driver, idx) => { sprintMap[driver.id] = idx + 1; });
-    dnfSprint.forEach(driver => { sprintMap[driver.id] = '—'; });
-    sprintHistory[completedRaces] = sprintMap;
-    
-    sprintOrder.forEach((driver, idx) => {
-      let pts = idx < motogpSprintPoints.length ? motogpSprintPoints[idx] : 0;
-      if (pts > 0) {
-        driverPoints[driver.id] = (driverPoints[driver.id] || 0) + pts;
-        if (driver.teamId) {
-          constructorPoints[driver.teamId] = (constructorPoints[driver.teamId] || 0) + pts;
-          currentTeamPoints[driver.teamId] = (currentTeamPoints[driver.teamId] || 0) + pts;
-          const team = teams.find(t => t.id === driver.teamId);
-          if (team && team.manufacturer) {
-            const currentBest = sprintManufacturerBest[team.manufacturer] || 0;
-            sprintManufacturerBest[team.manufacturer] = Math.max(currentBest, pts);
-          }
-        }
-      }
-    });
-  }
-  // === КОНЕЦ ЛОГИКИ СПРИНТОВ ===
-
-  const activeDrivers = [], dnfs = [];
-  for (let driver of drivers) {
-    const teamRel = reliabilityMap[driver.teamId] || 5;
-    let dnfChance = (currentMode === 'fe') ? 0.35 : Math.min(0.65, (11 - teamRel) / 22 + Math.random() * 0.2);
-    if (Math.random() < dnfChance) dnfs.push(driver);
-    else activeDrivers.push(driver);
-  }
-
-  if (activeDrivers.length === 0) {
-    const currentRaceMap = {};
-    drivers.forEach(d => { currentRaceMap[d.id] = '—'; });
-    seasonHistory.push(currentRaceMap);
-    teamRaceHistory.push({});
-    if (currentMode === 'motogp') manufacturerRaceHistory.push({});
-    lastRaceResults = []; lastRaceTeamPoints = {};
-    completedRaces++; renderAll(); return;
-  }
-
-  const performance = activeDrivers.map(driver => {
-    const team = teams.find(t => t.id === driver.teamId);
-    const teamRating = team ? getTeamOverallRating(team) : 5;
-    let basePower = (driver.rating * 0.4) + (teamRating * 0.6);
-    let failureChance = (currentMode === 'fe') ? 0.45 : 0.15;
-    if (Math.random() < failureChance) {
-      let penalty = (currentMode === 'fe') ? 2.5 + Math.random() * 2.5 : 1.5 + Math.random() * 1.0;
-      basePower -= penalty;
-      if (basePower < 0.5) basePower = 0.5;
-    }
-    let randomFactor = (currentMode === 'fe') ? ((Math.random() * 6) - 3) + (Math.random() < 0.2 ? (Math.random() < 0.5 ? 2 : -2) : 0) : (Math.random() * 1.6) - 0.6;
-    let finalScore = Math.max(0.5, basePower + randomFactor);
-    return { driver, score: finalScore };
-  });
-  
-  performance.sort((a,b) => b.score - a.score);
-  const raceOrder = performance.map(p => p.driver);
-
-  const earnedDriver = {}, earnedTeam = {}, earnedManufacturer = {};
-  raceOrder.forEach((driver, idx) => {
-    let pts = idx < pointsTable.length ? pointsTable[idx] : 0;
-    earnedDriver[driver.id] = pts;
-    driverPoints[driver.id] = (driverPoints[driver.id] || 0) + pts;
-    if(driver.teamId) {
-      earnedTeam[driver.teamId] = (earnedTeam[driver.teamId] || 0) + pts;
-      currentTeamPoints[driver.teamId] = (currentTeamPoints[driver.teamId] || 0) + pts;
-      const team = teams.find(t => t.id === driver.teamId);
-      if(team && team.manufacturer) {
-        const currentBest = raceManufacturerBest[team.manufacturer] || 0;
-        raceManufacturerBest[team.manufacturer] = Math.max(currentBest, pts);
-      }
-    }
-  });
-  
-  for(let tid in earnedTeam) constructorPoints[tid] = (constructorPoints[tid] || 0) + earnedTeam[tid];
-  
-  if (currentMode === 'motogp') {
-    const allManufacturers = new Set([...Object.keys(sprintManufacturerBest), ...Object.keys(raceManufacturerBest)]);
-    for (let mfr of allManufacturers) {
-      const bestSprint = sprintManufacturerBest[mfr] || 0;
-      const bestRace = raceManufacturerBest[mfr] || 0;
-      const totalForRound = bestSprint + bestRace;
-      if (totalForRound > 0) {
-        manufacturerPoints[mfr] = (manufacturerPoints[mfr] || 0) + totalForRound;
-        currentManufacturerPoints[mfr] = totalForRound;
-      }
-    }
-  }
-
-  const currentRaceMap = {};
-  raceOrder.forEach((driver, idx) => { currentRaceMap[driver.id] = idx + 1; });
-  dnfs.forEach(driver => { currentRaceMap[driver.id] = '—'; });
-  seasonHistory.push(currentRaceMap);
-  teamRaceHistory.push({...currentTeamPoints});
-  if (currentMode === 'motogp') manufacturerRaceHistory.push({...currentManufacturerPoints});
-
-  lastRaceResults = raceOrder.map((driver, idx) => {
-    const team = teams.find(t => t.id === driver.teamId);
-    return { position: idx+1, driverName: driver.name, teamName: team ? team.name : '—', points: earnedDriver[driver.id] };
-  });
-  dnfs.forEach(driver => {
-    const team = teams.find(t => t.id === driver.teamId);
-    lastRaceResults.push({ position: 'DNF', driverName: driver.name, teamName: team ? team.name : '—', points: 0 });
-  });
-  lastRaceTeamPoints = { ...earnedTeam };
-  completedRaces++;
-  renderAll();
+if(drivers.length === 0) { alert("Нет пилотов"); return; }
+if(teams.length === 0) { alert("Нет команд"); return; }
+if(totalSeasonRaces > 0 && completedRaces >= totalSeasonRaces) { alert(`Сезон завершён! Сбросьте сезон.`); return; }
+const hasSprints = (currentMode === 'motogp' && totalSeasonRaces > 0 && currentSeasonYear >= 2023);
+const reliabilityMap = Object.fromEntries(teams.map(t => [t.id, t.reliability]));
+const activeQual = [];
+for (let driver of drivers) {
+const teamRel = reliabilityMap[driver.teamId] || 5;
+let qualSkipChance = (currentMode === 'fe') ? Math.max(0.05, (11 - teamRel) / 18) : Math.min(0.65, (11 - teamRel) / 22);
+if (Math.random() < qualSkipChance) continue;
+activeQual.push(driver);
 }
-
-function resetSeason() {
-  drivers.forEach(d => driverPoints[d.id] = 0);
-  teams.forEach(t => constructorPoints[t.id] = 0);
-  manufacturerPoints = {};
-  seasonHistory = []; poleHistory = []; sprintHistory = [];
-  teamRaceHistory = []; manufacturerRaceHistory = [];
-  lastRaceResults = []; lastRaceTeamPoints = {}; lastPoleSitter = null;
-  completedRaces = 0;
-  renderAll();
+let poleDriver = null;
+if (activeQual.length > 0) {
+const qualPerf = activeQual.map(driver => {
+const team = teams.find(t => t.id === driver.teamId);
+const teamRating = team ? getTeamOverallRating(team) : 5;
+let base = (driver.rating * 0.4) + (teamRating * 0.6);
+let score = 0;
+if (currentMode === 'fe') {
+let chaos = (Math.random() * 5) - 2.5;
+if (Math.random() < 0.15) chaos += (Math.random() < 0.5 ? 3 : -3);
+score = Math.max(0.5, base + chaos);
+} else {
+score = Math.max(0.5, base + (Math.random() * 1.2) - 0.6);
+}
+return { driver, score };
+});
+qualPerf.sort((a,b) => b.score - a.score);
+poleDriver = qualPerf[0].driver;
+} else { poleDriver = drivers[Math.floor(Math.random() * drivers.length)]; }
+const poleTeam = teams.find(t => t.id === poleDriver.teamId);
+lastPoleSitter = { name: poleDriver.name, teamName: poleTeam ? poleTeam.name : '—', driverId: poleDriver.id };
+poleHistory[completedRaces] = poleDriver.id;
+let sprintManufacturerBest = {}, raceManufacturerBest = {};
+let currentTeamPoints = {}, currentManufacturerPoints = {};
+if (currentMode === 'motogp' && hasSprints) {
+const activeSprint = [], dnfSprint = [];
+for (let driver of drivers) {
+const teamRel = reliabilityMap[driver.teamId] || 5;
+let dnfChance = Math.min(0.65, (11 - teamRel) / 22 + Math.random() * 0.2);
+if (Math.random() < dnfChance) dnfSprint.push(driver);
+else activeSprint.push(driver);
+}
+let sprintOrder = [];
+if (activeSprint.length > 0) {
+const sprintPerf = activeSprint.map(driver => {
+const team = teams.find(t => t.id === driver.teamId);
+const teamRating = team ? getTeamOverallRating(team) : 5;
+let base = (driver.rating * 0.4) + (teamRating * 0.6);
+if (Math.random() < 0.15) base -= 1.2 + Math.random() * 0.8;
+base = Math.max(0.5, base + (Math.random() * 1.6) - 0.6);
+return { driver, score: base };
+});
+sprintPerf.sort((a,b) => b.score - a.score);
+sprintOrder = sprintPerf.map(p => p.driver);
+}
+const sprintMap = {};
+sprintOrder.forEach((driver, idx) => { sprintMap[driver.id] = idx + 1; });
+dnfSprint.forEach(driver => { sprintMap[driver.id] = '—'; });
+sprintHistory[completedRaces] = sprintMap;
+sprintOrder.forEach((driver, idx) => {
+let pts = idx < motogpSprintPoints.length ? motogpSprintPoints[idx] : 0;
+if (pts > 0) {
+driverPoints[driver.id] = (driverPoints[driver.id] || 0) + pts;
+if (driver.teamId) {
+constructorPoints[driver.teamId] = (constructorPoints[driver.teamId] || 0) + pts;
+currentTeamPoints[driver.teamId] = (currentTeamPoints[driver.teamId] || 0) + pts;
+const team = teams.find(t => t.id === driver.teamId);
+if (team && team.manufacturer) {
+const currentBest = sprintManufacturerBest[team.manufacturer] || 0;
+sprintManufacturerBest[team.manufacturer] = Math.max(currentBest, pts);
+}
+}
+}
+});
+}
+const activeDrivers = [], dnfs = [];
+for (let driver of drivers) {
+const teamRel = reliabilityMap[driver.teamId] || 5;
+let dnfChance = (currentMode === 'fe') ? 0.35 : Math.min(0.65, (11 - teamRel) / 22 + Math.random() * 0.2);
+if (Math.random() < dnfChance) dnfs.push(driver);
+else activeDrivers.push(driver);
+}
+if (activeDrivers.length === 0) {
+const currentRaceMap = {};
+drivers.forEach(d => { currentRaceMap[d.id] = '—'; });
+seasonHistory.push(currentRaceMap);
+teamRaceHistory.push({});
+if (currentMode === 'motogp') manufacturerRaceHistory.push({});
+lastRaceResults = []; lastRaceTeamPoints = {};
+completedRaces++; renderAll(); return;
+}
+const performance = activeDrivers.map(driver => {
+const team = teams.find(t => t.id === driver.teamId);
+const teamRating = team ? getTeamOverallRating(team) : 5;
+let basePower = (driver.rating * 0.4) + (teamRating * 0.6);
+let failureChance = (currentMode === 'fe') ? 0.45 : 0.15;
+if (Math.random() < failureChance) {
+let penalty = (currentMode === 'fe') ? 2.5 + Math.random() * 2.5 : 1.5 + Math.random() * 1.0;
+basePower -= penalty;
+if (basePower < 0.5) basePower = 0.5;
+}
+let randomFactor = (currentMode === 'fe') ? ((Math.random() * 6) - 3) + (Math.random() < 0.2 ? (Math.random() < 0.5 ? 2 : -2) : 0) : (Math.random() * 1.6) - 0.6;
+let finalScore = Math.max(0.5, basePower + randomFactor);
+return { driver, score: finalScore };
+});
+performance.sort((a,b) => b.score - a.score);
+const raceOrder = performance.map(p => p.driver);
+const earnedDriver = {}, earnedTeam = {}, earnedManufacturer = {};
+raceOrder.forEach((driver, idx) => {
+let pts = idx < pointsTable.length ? pointsTable[idx] : 0;
+earnedDriver[driver.id] = pts;
+driverPoints[driver.id] = (driverPoints[driver.id] || 0) + pts;
+if(driver.teamId) {
+earnedTeam[driver.teamId] = (earnedTeam[driver.teamId] || 0) + pts;
+currentTeamPoints[driver.teamId] = (currentTeamPoints[driver.teamId] || 0) + pts;
+const team = teams.find(t => t.id === driver.teamId);
+if(team && team.manufacturer) {
+const currentBest = raceManufacturerBest[team.manufacturer] || 0;
+raceManufacturerBest[team.manufacturer] = Math.max(currentBest, pts);
+}
+}
+});
+for(let tid in earnedTeam) constructorPoints[tid] = (constructorPoints[tid] || 0) + earnedTeam[tid];
+if (currentMode === 'motogp') {
+if (hasSprints) {
+const allManufacturers = new Set([...Object.keys(sprintManufacturerBest), ...Object.keys(raceManufacturerBest)]);
+for (let mfr of allManufacturers) {
+const bestSprint = sprintManufacturerBest[mfr] || 0;
+const bestRace = raceManufacturerBest[mfr] || 0;
+const totalForRound = bestSprint + bestRace;
+if (totalForRound > 0) {
+manufacturerPoints[mfr] = (manufacturerPoints[mfr] || 0) + totalForRound;
+currentManufacturerPoints[mfr] = totalForRound;
+}
+}
+} else {
+for (let mfr of Object.keys(raceManufacturerBest)) {
+const bestRace = raceManufacturerBest[mfr] || 0;
+if (bestRace > 0) {
+manufacturerPoints[mfr] = (manufacturerPoints[mfr] || 0) + bestRace;
+currentManufacturerPoints[mfr] = bestRace;
+}
+}
+}
+}
+const currentRaceMap = {};
+raceOrder.forEach((driver, idx) => { currentRaceMap[driver.id] = idx + 1; });
+dnfs.forEach(driver => { currentRaceMap[driver.id] = '—'; });
+seasonHistory.push(currentRaceMap);
+teamRaceHistory.push({...currentTeamPoints});
+if (currentMode === 'motogp') manufacturerRaceHistory.push({...currentManufacturerPoints});
+lastRaceResults = raceOrder.map((driver, idx) => {
+const team = teams.find(t => t.id === driver.teamId);
+return { position: idx+1, driverName: driver.name, teamName: team ? team.name : '—', points: earnedDriver[driver.id] };
+});
+dnfs.forEach(driver => {
+const team = teams.find(t => t.id === driver.teamId);
+lastRaceResults.push({ position: 'DNF', driverName: driver.name, teamName: team ? team.name : '—', points: 0 });
+});
+lastRaceTeamPoints = { ...earnedTeam };
+completedRaces++;
+renderAll();
 }
 // ---------- ЗАГРУЗКА ДАННЫХ MotoGP 2023,2024,2025,2026 ----------
 // ⚠️ ТВОИ ФУНКЦИИ loadSeason — НЕ ТРОГАЙ ⚠️
@@ -1335,9 +1256,9 @@ function loadSeason2026() {
     for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
     const driverData = [
-        ["Джордж Расселл","Mercedes",10.0], ["Кими Антонелли","Mercedes",10.],
-        ["Шарль Леклер","Ferrari",10.0], ["Льюис Хэмилтон","Ferrari",7.0],
-        ["Оскар Пиастри","McLaren",10.0], ["Ландо Норрис","McLaren",8.5],
+        ["Джордж Расселл","Mercedes",9.5], ["Кими Антонелли","Mercedes",10.0],
+        ["Шарль Леклер","Ferrari",9.5], ["Льюис Хэмилтон","Ferrari",9.5],
+        ["Оскар Пиастри","McLaren",9.5], ["Ландо Норрис","McLaren",9.5],
         ["Оливер Берман","Haas",7.0], ["Эстебан Окон","Haas",6.0],
         ["Пьер Гасли","Alpine",7.5], ["Франко Колапинто","Alpine",6.0],
         ["Лиам Лоусон","RB (Racing Bulls)",6.5], ["Арвид Линдблад","RB (Racing Bulls)",5.0],
@@ -1348,7 +1269,11 @@ function loadSeason2026() {
         ["Фернандо Алонсо","Aston Martin",6.5], ["Лэнс Стролл","Aston Martin",3.5]
     ];
     for(let d of driverData) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
-    totalSeasonRaces = 22; currentSeasonYear = 2026;
+    totalSeasonRaces = 23; currentSeasonYear = 2026;
+    window.seasonCalendar = [
+        "🇦🇺", "🇨🇳", "🇯🇵", "🇺🇸", "🇨🇦", "🇲🇨", "🇪🇸", "🇦🇹", "🇬🇧", "🇧🇪",
+        "🇭🇺", "🇳🇱", "🇮🇹", "🇪🇸", "🇦🇿", "🇲🇾", "🇸🇬", "🇺🇸", "🇲🇽", "🇧🇷", "🇺🇸", "🇶🇦", "🇦🇪"
+    ];
     pointsTable = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
     renderPointsEditor();
     syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 2026 🏆";
@@ -1367,7 +1292,7 @@ function loadSeason2025() {
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
     const drivers25 = [
         ["Ландо Норрис","McLaren",10.0], ["Оскар Пиастри","McLaren",9.5],
-        ["Макс Ферстаппен","Red Bull",10.0], ["Юки Цунода","Red Bull",0.5],
+        ["Макс Ферстаппен","Red Bull",10.0], ["Юки Цунода","Red Bull",3],
         ["Джордж Расселл","Mercedes",8.5], ["Кими Антонелли","Mercedes",6.0],
         ["Шарль Леклер","Ferrari",8.5], ["Льюис Хэмилтон","Ferrari",7.0],
         ["Алекс Албон","Williams",6.5], ["Карлос Сайнс","Williams",6.5],
@@ -1388,7 +1313,7 @@ function loadSeason2024() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
     const teamSpecs = {
         "McLaren": { engine:10, aero:9, reliability:9 }, "Ferrari": { engine:9, aero:9, reliability:9 },
-        "Red Bull": { engine:10, aero:10, reliability:9 }, "Mercedes": { engine:8.5, aero:8, reliability:9 },
+        "Red Bull": { engine:10, aero:10, reliability:9 }, "Mercedes": { engine:8, aero:8, reliability:9 },
         "Aston Martin": { engine:6, aero:6, reliability:9 }, "Alpine": { engine:5, aero:6, reliability:9 },
         "Haas": { engine:6, aero:5, reliability:9 }, "VCARB": { engine:5, aero:6, reliability:9 },
         "Williams": { engine:4, aero:5, reliability:9 }, "Sauber": { engine:3, aero:4, reliability:9 }
@@ -1396,10 +1321,10 @@ function loadSeason2024() {
     for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
     const drivers24 = [
-        ["Lando Norris","McLaren",9.0], ["Oscar Piastri","McLaren",7.0],
-        ["Charles Leclerc","Ferrari",9.0], ["Carlos Sainz Jr.","Ferrari",7.0],
-        ["Max Verstappen","Red Bull",9.5], ["Sergio Pérez","Red Bull",2.0],
-        ["George Russell","Mercedes",7.5], ["Lewis Hamilton","Mercedes",6.5],
+        ["Lando Norris","McLaren",9.0], ["Oscar Piastri","McLaren",8],
+        ["Charles Leclerc","Ferrari",9.0], ["Carlos Sainz Jr.","Ferrari",8],
+        ["Max Verstappen","Red Bull",9.8], ["Sergio Pérez","Red Bull",2.0],
+        ["George Russell","Mercedes",8.5], ["Lewis Hamilton","Mercedes",8],
         ["Fernando Alonso","Aston Martin",5.0], ["Lance Stroll","Aston Martin",3.5],
         ["Pierre Gasly","Alpine",4.5], ["Esteban Ocon","Alpine",3.5],
         ["Nico Hülkenberg","Haas",4.5], ["Kevin Magnussen","Haas",3.5],
@@ -1418,8 +1343,8 @@ function loadSeason2023() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
     const teamSpecs = {
         "Red Bull": { engine:10, aero:10, reliability:10 }, "Mercedes": { engine:8, aero:8, reliability:10 },
-        "Ferrari": { engine:7, aero:8, reliability:10 }, "McLaren": { engine:7, aero:8, reliability:10 },
-        "Aston Martin": { engine:8, aero:8, reliability:10 }, "Alpine": { engine:6, aero:7, reliability:10 },
+        "Ferrari": { engine:8, aero:8, reliability:10 }, "McLaren": { engine:7, aero:8, reliability:10 },
+        "Aston Martin": { engine:7, aero:8, reliability:10 }, "Alpine": { engine:6, aero:7, reliability:10 },
         "Williams": { engine:6, aero:5, reliability:10 }, "AlphaTauri": { engine:5, aero:5, reliability:10 },
         "Alfa Romeo": { engine:4, aero:5, reliability:10 }, "Haas": { engine:4, aero:5, reliability:10 }
     };
@@ -1456,10 +1381,10 @@ function loadSeason2022() {
     for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
     const drivers22 = [
-        ["Max Verstappen","Red Bull",9.5], ["Sergio Pérez","Red Bull",6.2],
-        ["Lewis Hamilton","Mercedes",7.0], ["George Russell","Mercedes",7.0],
-        ["Charles Leclerc","Ferrari",8.5], ["Carlos Sainz","Ferrari",6.5],
-        ["Lando Norris","McLaren",7.0], ["Daniel Ricciardo","McLaren",4.5],
+        ["Max Verstappen","Red Bull",10], ["Sergio Pérez","Red Bull",7],
+        ["Lewis Hamilton","Mercedes",8.0], ["George Russell","Mercedes",8.0],
+        ["Charles Leclerc","Ferrari",9.5], ["Carlos Sainz","Ferrari",8],
+        ["Lando Norris","McLaren",6.5], ["Daniel Ricciardo","McLaren",5],
         ["Sebastian Vettel","Aston Martin",5.0], ["Lance Stroll","Aston Martin",3.0],
         ["Fernando Alonso","Alpine",5.5], ["Esteban Ocon","Alpine",5.5],
         ["Alexander Albon","Williams",5.5], ["Nicholas Latifi","Williams",2.5],
@@ -1488,11 +1413,11 @@ function loadSeason2021() {
     const drivers21 = [
         ["Льюис Хэмилтон","Mercedes",10.0], ["Валттери Боттас","Mercedes",7.5],
         ["Макс Ферстаппен","Red Bull",10.0], ["Серхио Перес","Red Bull",7.5],
-        ["Шарль Леклер","Ferrari",7.0], ["Карлос Сайнс","Ferrari",7.2],
-        ["Ландо Норрис","McLaren",7.0], ["Даниэль Риккардо","McLaren",5.0],
+        ["Шарль Леклер","Ferrari",7.0], ["Карлос Сайнс","Ferrari",6.7],
+        ["Ландо Норрис","McLaren",7.2], ["Даниэль Риккардо","McLaren",5.5],
         ["Фернандо Алонсо","Alpine",6.5], ["Эстебан Окон","Alpine",6.0],
         ["Пьер Гасли","AlphaTauri",7.0], ["Юки Цунода","AlphaTauri",4.0],
-        ["Себастьян Феттель","Aston Martin",7.0], ["Лэнс Стролл","Aston Martin",5.0],
+        ["Себастьян Феттель","Aston Martin",6.5], ["Лэнс Стролл","Aston Martin",5.0],
         ["Джордж Расселл","Williams",5.5], ["Николас Латифи","Williams",3.0],
         ["Кими Райкконен","Alfa Romeo",5.0], ["Антонио Джовинацци","Alfa Romeo",3.5],
         ["Мик Шумахер","Haas",3.0], ["Никита Мазепин","Haas",1.5]
@@ -1882,6 +1807,95 @@ function loadSeason2006() {
     syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 2006 🏆";
 }
 
+function loadSeason1950() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Alfa Romeo": { engine:10, aero:10, reliability:7 }, "Talbot-Lago": { engine:8, aero:8, reliability:7 }, 
+        "Ferrari": { engine:8, aero:8, reliability:7 }, "Maserati": { engine:7, aero:7, reliability:7 }, 
+        "Gordini": { engine:7, aero:6, reliability:7 }, "Milano": { engine:6, aero:6, reliability:7 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers06 = [
+        ["Giuseppe Farina","Alfa Romeo",9.0], ["Juan Manuel Fangio","Alfa Romeo",10.0], ["Luigi Fagioli","Alfa Romeo",8.0], ["Reg Parnell","Alfa Romeo",8.0], ["Piero Taruffi","Alfa Romeo",7.0],
+        ["Louis Rosier","Talbot-Lago",8.0], ["Yves Giraud-Cabantous","Talbot-Lago",7.0], ["Philippe Étancelin","Talbot-Lago",7.0], ["Eugène Chaboud","Talbot-Lago",7.0], ["Bob Gerard","Talbot-Lago",6.0],
+        ["Luigi Villoresi","Ferrari",6.0], ["Alberto Ascari","Ferrari",8.0], ["Raymond Sommer","Ferrari",7.0], ["Peter Whitehead","Ferrari",7.5], ["Dorino Serafini","Ferrari",7.0],
+        ["Louis Chiron","Maserati",8.0], ["Prince Bira","Maserati",8.0],
+        ["Felice Bonetto","Milano",7.0], ["Nello Pagani","Milano",6.0], ["Toulo de Graffenried","Milano",7.0]
+
+    ];
+    for(let d of drivers06) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 6; currentSeasonYear = 1950;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1950 🏆";
+}
+
+function loadMotoGP2026() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; 
+    seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+      "Ducati Lenovo": { engine: 10, aero: 9, reliability: 8, manufacturer: "Ducati"},
+	    "Gresini Racing": { engine: 9, aero: 9, reliability: 8, manufacturer: "Ducati" },
+	    "VR46 Racing Team": { engine: 9, aero: 9, reliability: 8, manufacturer: "Ducati" },
+	    "Aprilia Racing": { engine: 9, aero: 10, reliability: 8, manufacturer: "Aprilia" },
+	    "Trackhouse MotoGP Team": { engine: 9, aero: 9, reliability: 8, manufacturer: "Aprilia" },
+	    "Red Bull KTM Factory": { engine: 8, aero: 9, reliability: 8, manufacturer: "KTM" },
+	    "Red Bull KTM Tech3": { engine: 8, aero: 9, reliability: 8, manufacturer: "KTM" },
+	    "Honda HRC Castrol": { engine: 7, aero: 8, reliability: 8, manufacturer: "Honda" },
+	    "Castrol Honda LCR": { engine: 7, aero: 8, reliability: 8, manufacturer: "Honda" },
+	    "Monster Energy Yamaha": { engine: 6, aero: 7, reliability: 8, manufacturer: "Yamaha" },
+	    "Prima Pramac Yamaha": { engine: 6, aero: 7, reliability: 8, manufacturer: "Yamaha" },
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) {
+        teams.push({ 
+            id: generateId(), 
+            name, 
+            engine: spec.engine, 
+            aero: spec.aero, 
+            reliability: spec.reliability,  
+            manufacturer: spec.manufacturer
+        });
+    }
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers24 = [
+        ["Marc Márquez", "Ducati Lenovo", 9],
+        ["Francesco Bagnaia", "Ducati Lenovo", 8],
+	    ["Álex Márquez", "Gresini Racing", 8.0],	
+	    ["Fermín Aldeguer", "Gresini Racing", 7.5],	
+	    ["Fabio Di Giannantonio", "VR46 Racing Team", 9],
+        ["Franco Morbidelli", "VR46 Racing Team", 6.5],
+	    ["Marco Bezzecchi", "Aprilia Racing", 9],
+	    ["Jorge Martín", "Aprilia Racing", 9],
+	    ["Raúl Fernández", "Trackhouse MotoGP Team", 8.5],
+        ["Ai Ogura", "Trackhouse MotoGP Team", 8.5],
+        ["Pedro Acosta", "Red Bull KTM Factory", 9],
+        ["Brad Binder", "Red Bull KTM Factory", 7],
+        ["Enea Bastianini", "Red Bull KTM Tech3", 7.5],
+        ["Maverick Viñales", "Red Bull KTM Tech3", 7.0],
+        ["Luca Marini", "Honda HRC Castrol", 7.5],
+        ["Joan Mir", "Honda HRC Castrol", 8],
+        ["Johann Zarco", "Castrol Honda LCR", 8],
+        ["Diogo Moreira", "Castrol Honda LCR", 7.5],
+        ["Fabio Quartararo", "Monster Energy Yamaha", 8.5],
+        ["Álex Rins", "Monster Energy Yamaha", 7],
+        ["Jack Miller", "Prima Pramac Yamaha", 7],
+        ["Toprak Razgatlıoğlu", "Prima Pramac Yamaha", 6.5]
+    ];
+    for(let d of drivers24) {
+        let teamObj = tm[d[1]];
+        if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] });
+    }
+    totalSeasonRaces = 22;
+    currentSeasonYear = 2026;
+    pointsTable = [25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    motogpSprintPoints = [12, 9, 7, 6, 5, 4, 3, 2, 1];
+    renderPointsEditor();
+    syncPoints();
+    renderAll();
+    document.getElementById('simulatorTitle').innerHTML = "🏍️ MOTOGP · СЕЗОН 2026 🏍️";
+}
+
 function loadMotoGP2025() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; 
     seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
@@ -2047,6 +2061,69 @@ function loadMotoGP2023() {
     document.getElementById('simulatorTitle').innerHTML = "🏍️ MOTOGP · СЕЗОН 2023 🏍️";
 }
 
+function loadMotoGP2022() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; 
+    seasonHistory = []; sprintHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    
+    const teamSpecs = {
+        "Ducati Lenovo": { engine: 10, aero: 9, reliability: 9, manufacturer: "Ducati" },
+        "Aprilia Racing": { engine: 8, aero: 8, reliability: 9 },
+        "Gresini Racing": { engine: 7, aero: 8, reliability: 9 },
+        "VR46 Racing": { engine: 8, aero: 7, reliability: 9 },
+        "Pramac Racing": { engine: 8, aero: 8, reliability: 9 },
+        "LCR Honda Castrol": { engine: 6, aero: 6, reliability: 9 },
+        "Repsol Honda Team": { engine: 7, aero: 7, reliability: 9 },
+        "Red Bull KTM Factory": { engine: 8, aero: 8, reliability: 9 },
+        "Tech3 KTM": { engine: 5, aero: 5, reliability: 9 },
+        "Team Suzuki": { engine: 7, aero: 8, reliability: 9 },
+        "Monster Energy Yamaha": { engine: 9, aero: 9, reliability: 9 },
+        "WithU Yamaha RNF": { engine: 5, aero: 6, reliability: 9 },
+        
+    };
+    for (let [name, spec] of Object.entries(teamSpecs)) {
+        teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    }
+    const tm = Object.fromEntries(teams.map(t => [t.name, t]));
+    const drivers23 = [
+        ["Francesco Bagnaia", "Ducati Lenovo", 9.5],
+        ["Jack Miller", "Ducati Lenovo", 7.5],
+        ["Aleix Espargaro", "Aprilia Racing", 9],
+        ["Maverick Viñales", "Aprilia Racing", 7.5],
+        ["Enea Bastianini", "Gresini Racing", 9],
+        ["Fabio Di Giannantonio", "Gresini Racing", 6.5],
+        ["Luca Marini", "VR46 Racing", 7.5],
+        ["Marco Bezzecchi", "VR46 Racing", 7.5],
+        ["Johann Zarco", "Pramac Racing", 8],
+        ["Jorge Martín", "Pramac Racing", 8],
+        ["Takaaki Nakagami", "LCR Honda Castrol", 7],
+        ["Álex Márquez", "LCR Honda Castrol", 7],
+        ["Pol Espargaró", "Repsol Honda Team", 7],
+        ["Marc Márquez", "Repsol Honda Team", 9],
+        ["Brad Binder", "Red Bull KTM Factory", 8],
+        ["Miguel Oliveira", "Red Bull KTM Factory", 7.5],
+        ["Raúl Fernández", "Tech3 KTM", 7],
+        ["Remy Gardner", "Tech3 KTM", 5],
+        ["Joan Mir", "Team Suzuki", 7],
+        ["Álex Rins", "Team Suzuki", 8],
+        ["Fabio Quartararo", "Monster Energy Yamaha", 9.5],
+        ["Franco Morbidelli", "Monster Energy Yamaha", 6],
+        ["Andrea Dovizioso", "WithU Yamaha RNF", 7],
+        ["Darryn Binder", "WithU Yamaha RNF", 5],
+
+    ];
+    for (let d of drivers23) {
+        let teamObj = tm[d[1]];
+        if (teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] });
+    }
+    totalSeasonRaces = 20;
+    currentSeasonYear = 2022;
+    pointsTable = [25, 20, 16, 13, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1];
+    renderPointsEditor();
+    syncPoints();
+    renderAll();
+    document.getElementById('simulatorTitle').innerHTML = "🏍️ MOTOGP · СЕЗОН 2022 🏍️";
+}
+
 function loadMotoGP2021() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; 
     seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
@@ -2192,7 +2269,7 @@ function loadIndyCar2024() {
     for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
     const drivers24 = [
-        ["Alex Palou", "Chip Ganassi Racing", 9.5], ["Scott Dixon", "Chip Ganassi Racing", 9.0],
+        ["Alex Palou", "Chip Ganassi Racing", 10.0], ["Scott Dixon", "Chip Ganassi Racing", 8.], ["Kyffin Simpson", "Chip Ganassi Racing", 9.0],
         ["Josef Newgarden", "Team Penske", 9.3], ["Will Power", "Team Penske", 8.8],
         ["Colton Herta", "Andretti Global", 8.5], ["Kyle Kirkwood", "Andretti Global", 7.8],
         ["Pato O'Ward", "Arrow McLaren", 8.9], ["Alexander Rossi", "Arrow McLaren", 7.5],
@@ -2207,6 +2284,42 @@ function loadIndyCar2024() {
     totalSeasonRaces = 17; currentSeasonYear = 2024;
     pointsTable = [50,40,35,32,30,28,26,24,22,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1];
     renderPointsEditor(); syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏁 INDYCAR · СЕЗОН 2024 🏁";
+}
+
+function loadIndyCar2026() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Chip Ganassi Racing": { engine:9, aero:10, reliability:9 },
+        "Team Penske": { engine:10, aero:9, reliability:9 },
+        "Andretti Global": { engine:9, aero:9, reliability:9 },
+        "Arrow McLaren": { engine:9, aero:9, reliability:9 },
+        "Rahal Letterman Lanigan": { engine:7, aero:7, reliability:8 },
+        "Meyer Shank Racing": { engine:8, aero:7, reliability:8 },
+        "Ed Carpenter Racing": { engine:8, aero:7, reliability:8 },
+        "A.J. Foyt Enterprises": { engine:8, aero:7, reliability:8 },
+        "Dale Coyne Racing": { engine:7, aero:7, reliability:8 },
+        "Juncos Hollinger Racing": { engine:6, aero:7, reliability:8 },
+        "PREMA Racing": { engine:7, aero:6, reliability:8 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers24 = [
+        ["Alex Palou", "Chip Ganassi Racing", 10.0], ["Scott Dixon", "Chip Ganassi Racing", 8.0], ["Kyffin Simpson", "Chip Ganassi Racing", 5.5],
+        ["Josef Newgarden", "Team Penske", 8.0], ["David Malukas", "Team Penske", 9.0], ["Scott McLaughlin", "Team Penske", 8.0],
+        ["Will Power", "Andretti Global", 7.5], ["Kyle Kirkwood", "Andretti Global", 8.5], ["Marcus Ericsson", "Andretti Global", 7.0],
+        ["Pato O'Ward", "Arrow McLaren", 9.0], ["Nolan Siegel", "Arrow McLaren", 5.5], ["Christian Lundgaard", "Arrow McLaren", 9.0],
+        ["Graham Rahal", "Rahal Letterman Lanigan", 8.0], ["Louis Foster", "Rahal Letterman Lanigan", 7.0], ["Mick Schumacher", "Rahal Letterman Lanigan", 5.5],
+        ["Felix Rosenqvist", "Meyer Shank Racing", 8.5], ["Marcus Armstrong", "Meyer Shank Racing", 8.0],
+        ["Alexander Rossi", "Ed Carpenter Racing", 8.0], ["Christian Rasmussen", "Ed Carpenter Racing", 7.5],
+        ["Caio Collet", "A.J. Foyt Enterprises", 7.0], ["Santino Ferrucci", "A.J. Foyt Enterprises", 8.0],
+        ["Romain Grosjean", "Dale Coyne Racing", 7.5], ["Dennis Hauger", "Dale Coyne Racing", 7.5],
+        ["Rinus VeeKay", "Juncos Hollinger Racing", 8.5], ["Sting Ray Robb", "Juncos Hollinger Racing", 5.5],
+        ["Callum Ilott", "PREMA Racing", 7.5], ["Robert Shwartzman", "PREMA Racing", 7.0]
+    ];
+    for(let d of drivers24) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 18; currentSeasonYear = 2026;
+    pointsTable = [50,40,35,32,30,28,26,24,22,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5];
+    renderPointsEditor(); syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏁 INDYCAR · СЕЗОН 2026 🏁";
 }
 
 function loadFormulaE2025() {
@@ -2297,77 +2410,86 @@ function loadFormulaE2024() {
 
 
 function generateSeasonGrid() {
-  const grid = document.getElementById('seasonGrid');
-  grid.innerHTML = '';
-  let years = [];
-  if (currentMode === 'f1') for (let y = 1950; y <= 2026; y++) years.push(y);
-  else if (currentMode === 'motogp') { for (let y = 2002; y <= 2026; y++) years.push(y); }
-  else if (currentMode === 'wec') { for (let y = 2012; y <= 2017; y++) years.push(y); years.push("2018-19","2019-20"); for (let y = 2021; y <= 2026; y++) years.push(y); }
-  else if (currentMode === 'fe') for (let y = 2014; y <= 2026; y++) years.push(y);
-  else for (let y = 1996; y <= 2026; y++) years.push(y);
-  for (let year of years) {
-    const btn = document.createElement('div');
-    btn.className = 'season-card';
-    btn.textContent = year;
-    btn.addEventListener('click', (function(y) { return function() {
-      if (currentMode === 'f1') {
-        if (y === 2026) { loadSeason2026(); showSimulator(); }
-        else if (y === 2025) { loadSeason2025(); showSimulator(); }
-        else if (y === 2024) { loadSeason2024(); showSimulator(); }
-        else if (y === 2023) { loadSeason2023(); showSimulator(); }
-        else if (y === 2022) { loadSeason2022(); showSimulator(); }
-        else if (y === 2021) { loadSeason2021(); showSimulator(); }
-        else if (y === 2020) { loadSeason2020(); showSimulator(); }
-        else if (y === 2019) { loadSeason2019(); showSimulator(); }
-        else if (y === 2018) { loadSeason2018(); showSimulator(); }
-        else if (y === 2017) { loadSeason2017(); showSimulator(); }
-        else if (y === 2016) { loadSeason2016(); showSimulator(); }
-        else if (y === 2015) { loadSeason2015(); showSimulator(); }
-        else if (y === 2014) { loadSeason2014(); showSimulator(); }
-        else if (y === 2013) { loadSeason2013(); showSimulator(); }
-        else if (y === 2011) { loadSeason2011(); showSimulator(); }
-        else if (y === 2009) { loadSeason2009(); showSimulator(); }
-        else if (y === 2008) { loadSeason2008(); showSimulator(); }
-        else if (y === 2006) { loadSeason2006(); showSimulator(); }
-        else alert(`Сезон F1 ${y} в разработке.`);
-      } else if (currentMode === 'motogp') {
-        if (y === 2025) { loadMotoGP2025(); showSimulator(); }
-        else if (y === 2024) { loadMotoGP2024(); showSimulator(); }
-        else if (y === 2023) { loadMotoGP2023(); showSimulator(); }
-        else if (y === 2021) { loadMotoGP2021(); showSimulator(); }
-        else if (y === 2020) { loadMotoGP2020(); showSimulator(); }
-        else alert(`Сезон MotoGP ${y} в разработке.`);
-      } else if (currentMode === 'wec') alert("WEC в разработке, используйте кастомный режим.");
-      else if (currentMode === 'fe') {
-        if (y === 2025) { loadFormulaE2025(); showSimulator(); }
-        else if (y === 2024) { loadFormulaE2024(); showSimulator(); }
-        else alert(`Сезон Formula E ${y} в разработке.`);
-      } else {
-        if (y === 2024) { loadIndyCar2024(); showSimulator(); }
-        else alert(`Сезон IndyCar ${y} в разработке.`);
-      }
-    }; })(year));
-    grid.appendChild(btn);
-  }
+const grid = document.getElementById('seasonGrid');
+grid.innerHTML = '';
+let years = [];
+if (currentMode === 'f1') for (let y = 1950; y <= 2026; y++) years.push(y);
+else if (currentMode === 'motogp') { for (let y = 2002; y <= 2026; y++) years.push(y); }
+else if (currentMode === 'wec') { for (let y = 2012; y <= 2017; y++) years.push(y); years.push("2018-19","2019-20"); for (let y = 2021; y <= 2026; y++) years.push(y); }
+else if (currentMode === 'fe') for (let y = 2014; y <= 2026; y++) years.push(y);
+else for (let y = 1996; y <= 2026; y++) years.push(y);
+for (let year of years) {
+const btn = document.createElement('div');
+btn.className = 'season-card';
+btn.textContent = year;
+btn.addEventListener('click', (function(y) { return function() {
+if (currentMode === 'f1') {
+if (y === 2026) { loadSeason2026(); showSimulator(); }
+else if (y === 2025) { loadSeason2025(); showSimulator(); }
+else if (y === 2024) { loadSeason2024(); showSimulator(); }
+else if (y === 2023) { loadSeason2023(); showSimulator(); }
+else if (y === 2022) { loadSeason2022(); showSimulator(); }
+else if (y === 2021) { loadSeason2021(); showSimulator(); }
+else if (y === 2020) { loadSeason2020(); showSimulator(); }
+else if (y === 2019) { loadSeason2019(); showSimulator(); }
+else if (y === 2018) { loadSeason2018(); showSimulator(); }
+else if (y === 2017) { loadSeason2017(); showSimulator(); }
+else if (y === 2016) { loadSeason2016(); showSimulator(); }
+else if (y === 2015) { loadSeason2015(); showSimulator(); }
+else if (y === 2014) { loadSeason2014(); showSimulator(); }
+else if (y === 2013) { loadSeason2013(); showSimulator(); }
+else if (y === 2011) { loadSeason2011(); showSimulator(); }
+else if (y === 2009) { loadSeason2009(); showSimulator(); }
+else if (y === 2008) { loadSeason2008(); showSimulator(); }
+else if (y === 2006) { loadSeason2006(); showSimulator(); }
+else if (y === 1950) { loadSeason1950(); showSimulator(); }
+else alert(`Сезон F1 ${y} в разработке.`);
+} else if (currentMode === 'motogp') {
+    if (y === 2026) { loadMotoGP2026(); showSimulator(); }
+else if (y === 2025) { loadMotoGP2025(); showSimulator(); }
+else if (y === 2024) { loadMotoGP2024(); showSimulator(); }
+else if (y === 2023) { loadMotoGP2023(); showSimulator(); }
+else if (y === 2022) { loadMotoGP2022(); showSimulator(); }
+else if (y === 2021) { loadMotoGP2021(); showSimulator(); }
+else if (y === 2020) { loadMotoGP2020(); showSimulator(); }
+else alert(`Сезон MotoGP ${y} в разработке.`);
+} else if (currentMode === 'wec') alert("WEC в разработке, используйте кастомный режим.");
+else if (currentMode === 'fe') {
+if (y === 2025) { loadFormulaE2025(); showSimulator(); }
+else if (y === 2024) { loadFormulaE2024(); showSimulator(); }
+else alert(`Сезон Formula E ${y} в разработке.`);
+} if (currentMode === 'indycar') {
+    if (y === 2026) { loadIndyCar2026(); showSimulator(); }
+else if (y === 2024) { loadIndyCar2024(); showSimulator(); }
+else alert(`Сезон IndyCar ${y} в разработке.`);
 }
-
+}; })(year));
+grid.appendChild(btn);
+}
+}
 function setMode(mode) {
-  currentMode = mode;
-  document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
-  if (mode === 'f1') { document.getElementById('switchF1').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏁 F1 RACE SIMULATOR 🏁"; document.querySelector('.season-header p').innerText = "Выберите сезон 1950–2026"; }
-  else if (mode === 'motogp') { document.getElementById('switchMotoGP').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏍️ MOTOGP SIMULATOR 🏍️"; document.querySelector('.season-header p').innerText = "Сезоны 2023–2026 (с спринтами)"; }
-  else if (mode === 'wec') { document.getElementById('switchWEC').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏎️ WEC SIMULATOR 🏎️"; document.querySelector('.season-header p').innerText = "Выберите сезон 2012–2026"; }
-  else if (mode === 'fe') { document.getElementById('switchFE').classList.add('active'); document.getElementById('mainTitle').innerHTML = "⚡ FORMULA E SIMULATOR ⚡"; document.querySelector('.season-header p').innerText = "Выберите сезон 2014–2026"; }
-  else { document.getElementById('switchIndyCar').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏁 INDYCAR SIMULATOR 🏁"; document.querySelector('.season-header p').innerText = "Выберите сезон 1996–2026"; }
-  generateSeasonGrid();
-  if (document.getElementById('simulatorScreen').style.display !== 'none') showSeasonScreen();
+currentMode = mode;
+document.querySelectorAll('.mode-btn').forEach(btn => btn.classList.remove('active'));
+if (mode === 'f1') { document.getElementById('switchF1').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏁 F1 RACE SIMULATOR 🏁"; document.querySelector('.season-header p').innerText = "Выберите сезон 2006–2026"; }
+else if (mode === 'motogp') { document.getElementById('switchMotoGP').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏍️ MOTOGP SIMULATOR 🏍️"; document.querySelector('.season-header p').innerText = "Сезоны 2020–2025 (с спринтами с 2023)"; }
+else if (mode === 'wec') { document.getElementById('switchWEC').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏎️ WEC SIMULATOR 🏎️"; document.querySelector('.season-header p').innerText = "Выберите сезон"; }
+else if (mode === 'fe') { document.getElementById('switchFE').classList.add('active'); document.getElementById('mainTitle').innerHTML = "⚡ FORMULA E SIMULATOR ⚡"; document.querySelector('.season-header p').innerText = "Сезоны 2024–2025"; }
+else { document.getElementById('switchIndyCar').classList.add('active'); document.getElementById('mainTitle').innerHTML = "🏁 INDYCAR SIMULATOR 🏁"; document.querySelector('.season-header p').innerText = "Макларен лохи"; }
+generateSeasonGrid();
+if (document.getElementById('simulatorScreen').style.display !== 'none') showSeasonScreen();
 }
-
+function resetSeason() {
+drivers.forEach(d => driverPoints[d.id] = 0);
+teams.forEach(t => constructorPoints[t.id] = 0);
+seasonHistory = []; poleHistory = []; sprintHistory = [];
+lastRaceResults = []; lastRaceTeamPoints = {}; lastPoleSitter = null;
+completedRaces = 0;
+renderAll();
+}
 const seasonScreenDiv = document.getElementById('seasonScreen');
 const simScreenDiv = document.getElementById('simulatorScreen');
 function showSeasonScreen() { seasonScreenDiv.style.display = 'block'; simScreenDiv.style.display = 'none'; }
 function showSimulator() { seasonScreenDiv.style.display = 'none'; simScreenDiv.style.display = 'block'; }
-
 document.getElementById('switchF1').addEventListener('click', () => setMode('f1'));
 document.getElementById('switchMotoGP').addEventListener('click', () => setMode('motogp'));
 document.getElementById('switchIndyCar').addEventListener('click', () => setMode('indycar'));
@@ -2380,8 +2502,53 @@ document.getElementById('applyPointsBtn').addEventListener('click', applyPointsF
 document.getElementById('addPointsRowBtn').addEventListener('click', addPointsRow);
 document.getElementById('addTeamBtn').addEventListener('click', () => addTeam(document.getElementById('teamName').value, parseInt(document.getElementById('teamEngine').value), parseInt(document.getElementById('teamAero').value), parseInt(document.getElementById('teamReliability').value)));
 document.getElementById('addDriverBtn').addEventListener('click', () => addDriver(document.getElementById('driverName').value, document.getElementById('driverTeamSelect').value, parseInt(document.getElementById('driverRating').value)));
-document.getElementById('customModeBtn').addEventListener('click', () => { loadCustomMode(); showSimulator(); });
 
+// НОВЫЙ ОБРАБОТЧИК ДЛЯ КНОПКИ "СВОЯ СИМУЛЯЦИЯ"
+document.getElementById('customModeBtn').addEventListener('click', function() {
+    let racesInput = prompt("Введите количество гонок в сезоне (от 1 до 100):", "22");
+    if (racesInput === null) return; // отмена
+    let races = parseInt(racesInput);
+    if (isNaN(races) || races < 1) {
+        alert("Введите корректное число гонок (целое, больше 0).");
+        return;
+    }
+    if (races > 100) races = 100; // ограничим
+    // Сброс всех данных
+    teams = [];
+    drivers = [];
+    driverPoints = {};
+    constructorPoints = {};
+    seasonHistory = [];
+    lastRaceResults = [];
+    lastRaceTeamPoints = {};
+    completedRaces = 0;
+    totalSeasonRaces = races;
+    currentSeasonYear = "Custom";
+    // Создаём календарь - просто номера гонок
+    window.seasonCalendar = [];
+    for (let i = 1; i <= races; i++) {
+        window.seasonCalendar.push(`Г${i}`);
+    }
+    // Очищаем историю команд и производителей
+    teamRaceHistory = [];
+    manufacturerRaceHistory = [];
+    sprintHistory = [];
+    manufacturerPoints = {};
+    // Устанавливаем стандартную систему очков, если нужно
+    pointsTable = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
+    renderPointsEditor();
+    syncPoints();
+    renderAll();
+    document.getElementById('simulatorTitle').innerHTML = "🏆 КАСТОМНЫЙ СЕЗОН 🏆";
+    showSimulator();
+});
+
+// Исправление: гарантируем, что сетка сезонов отображается при загрузке
+document.addEventListener('DOMContentLoaded', function() {
+if (document.getElementById('seasonGrid').children.length === 0) {
+setMode('f1');
+}
+});
 renderPointsEditor();
 setMode('f1');
 showSeasonScreen();
