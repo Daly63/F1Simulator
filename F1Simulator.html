@@ -1807,12 +1807,38 @@ function loadSeason2006() {
     syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 2006 🏆";
 }
 
+function loadSeason1951() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Alfa Romeo": { engine:10, aero:10, reliability:6 }, "Ferrari": { engine:8, aero:8, reliability:6 },
+        "Talbot-Lago": { engine:8, aero:8, reliability:6 }, "Maserati": { engine:7, aero:7, reliability:6 },
+        "BRM": { engine:6, aero:7, reliability:6 }, "HWM": { engine:7, aero:7, reliability:6 },
+        "Veritas": { engine:7, aero:7, reliability:6 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers51 = [
+        ["Juan Manuel Fangio","Alfa Romeo",10], ["Giuseppe Farina","Alfa Romeo",9], ["Consalvo Sanesi","Alfa Romeo",7.5], ["Toulo de Graffenried","Alfa Romeo",7.5], // Alfa Romeo
+        ["Yves Giraud-Cabantous","Talbot-Lago",8], ["José Froilán González","Talbot-Lago",7.5], ["Henri Louveau","Talbot-Lago",6], ["Johnny Claes","Talbot-Lago",6], // Talbot-Lago
+        ["Alberto Ascari","Ferrari",9], ["Piero Taruffi","Ferrari",7.5], ["Peter Whitehead","Ferrari",7], // Ferrari
+        ["David Murray","Maserati",7], ["Louis Chiron","Maserati",7], ["Harry Schell","Maserati",6], // Maserati
+        ["Stirling Moss","HWM",8], ["George Abecassis","HWM",7.5], // HWM (на фото HMW)
+        ["Peter Hirt","Veritas",7.5], // Veritas
+        ["Hans Stuck","BRM",7], ["Ken Richardson","BRM",6], ["Reg Parnell","BRM",6] // BRM
+    ];
+    for(let d of drivers51) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 7; currentSeasonYear = 1951;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1951 🏆";
+}
+
 function loadSeason1950() {
     teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
     const teamSpecs = {
-        "Alfa Romeo": { engine:10, aero:10, reliability:7 }, "Talbot-Lago": { engine:8, aero:8, reliability:7 }, 
-        "Ferrari": { engine:8, aero:8, reliability:7 }, "Maserati": { engine:7, aero:7, reliability:7 }, 
-        "Gordini": { engine:7, aero:6, reliability:7 }, "Milano": { engine:6, aero:6, reliability:7 }
+        "Alfa Romeo": { engine:10, aero:10, reliability:6 }, "Talbot-Lago": { engine:8, aero:8, reliability:6 }, 
+        "Ferrari": { engine:8, aero:8, reliability:6 }, "Maserati": { engine:7, aero:7, reliability:6 }, 
+        "Gordini": { engine:7, aero:6, reliability:6 }, "Milano": { engine:6, aero:6, reliability:6 }
     };
     for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
     const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
@@ -2442,6 +2468,7 @@ else if (y === 2011) { loadSeason2011(); showSimulator(); }
 else if (y === 2009) { loadSeason2009(); showSimulator(); }
 else if (y === 2008) { loadSeason2008(); showSimulator(); }
 else if (y === 2006) { loadSeason2006(); showSimulator(); }
+else if (y === 1951) { loadSeason1951(); showSimulator(); }
 else if (y === 1950) { loadSeason1950(); showSimulator(); }
 else alert(`Сезон F1 ${y} в разработке.`);
 } else if (currentMode === 'motogp') {
