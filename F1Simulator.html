@@ -372,6 +372,18 @@ text-shadow: 0 0 4px rgba(225,6,0,0.8);
 z-index: 2;
 animation: pulse 2s infinite;
 }
+.wiki-table .fastest-indicator {
+position: absolute;
+top: 1px;
+right: 10px;
+font-size: 6px;
+color: #9b59b6;
+font-weight: 900;
+line-height: 1;
+text-shadow: 0 0 4px rgba(155,89,182,0.8);
+z-index: 2;
+animation: pulse 2s infinite;
+}
 /* Адаптивность для мобильных */
 @media (max-width: 1024px) {
 .wiki-table,
@@ -720,7 +732,7 @@ background: rgba(0,0,0,0.2); border-radius: var(--radius-sm); border: 1px dashed
 <table class="points-table" id="pointsEditorTable">
 <thead><tr><th>Место</th><th>Очки</th><th></th></tr></thead>
 <tbody id="pointsEditorTbody"></tbody>
-<tfoot><tr><td colspan="3"><button id="addPointsRowBtn" style="background:rgba(0,0,0,0.3); border:1px solid var(--border); color:var(--text-secondary);">+ Добавить место</button></td></tfoot>
+<tfoot><tr><td colspan="3"><button id="addPointsRowBtn" style="background:rgba(0,0,0,0.3); border:1px solid var(--border); color:var(--text-secondary);">+ Добавить место</button></td></tr></tfoot>
 </table>
 </div>
 <button id="applyPointsBtn" style="margin-top: 1rem; width: 100%;">💾 Применить систему</button>
@@ -733,7 +745,8 @@ let currentMode = 'f1';
 let teams = []; let drivers = []; let driverPoints = {}; let constructorPoints = {};
 let pointsTable = [25, 18, 15, 12, 10, 8, 6, 4, 2, 1];
 let totalSeasonRaces = 0; let completedRaces = 0;
-let seasonHistory = []; let poleHistory = []; let lastRaceResults = [];
+let seasonHistory = []; let poleHistory = []; let fastestLapHistory = [];
+let lastRaceResults = [];
 let lastRaceTeamPoints = {}; let lastPoleSitter = null;
 let motogpSprintPoints = [12, 9, 7, 6, 5, 4, 3, 2, 1];
 let manufacturerPoints = {}; let sprintHistory = [];
@@ -986,7 +999,13 @@ if (sprintPos !== '—' && sprintPos <= 9) sprintDisplay = `<span style="font-si
 }
 let content = `<div style="display:flex; align-items:center; justify-content:center; gap:4px;">${raceDisplay}${sprintDisplay}</div>`;
 const hasPole = (poleHistory[raceIdx] === driver.id);
-if (hasPole) content = `<div style="position:relative;">${content}<span class="pole-indicator">●</span></div>`;
+const hasFastest = (fastestLapHistory[raceIdx] === driver.id);
+let indicators = '';
+if (hasPole) indicators += `<span class="pole-indicator">●</span>`;
+if (hasFastest) indicators += `<span class="fastest-indicator">●</span>`;
+if (indicators) {
+    content = `<div style="position:relative;">${content}${indicators}</div>`;
+}
 row += `<td class="${cellClass}">${content}</td>`;
 }
 const pointsColor = isChampion ? '#FFD700' : 'var(--warning)';
@@ -1159,6 +1178,26 @@ let dnfChance = (currentMode === 'fe') ? 0.35 : Math.min(0.65, (11 - teamRel) / 
 if (Math.random() < dnfChance) dnfs.push(driver);
 else activeDrivers.push(driver);
 }
+
+// ========== НОВАЯ ЛОГИКА БЫСТРОГО КРУГА (случайный среди финишировавших) ==========
+let fastestLapDriver = null;
+if (activeDrivers.length > 0) {
+    const fastestCandidates = activeDrivers.map(driver => {
+        const team = teams.find(t => t.id === driver.teamId);
+        const teamRating = team ? getTeamOverallRating(team) : 5;
+        // Большой случайный разброс, чтобы быстрый круг мог достаться любому
+        let score = (driver.rating * 0.3) + (teamRating * 0.3) + (Math.random() * 2) - 1;
+        return { driver, score };
+    });
+    fastestCandidates.sort((a, b) => b.score - a.score);
+    fastestLapDriver = fastestCandidates[0].driver;
+} else {
+    // Если все сошли – берём случайного (редкий случай)
+    fastestLapDriver = drivers[Math.floor(Math.random() * drivers.length)];
+}
+fastestLapHistory[completedRaces] = fastestLapDriver.id;
+// =====================================================================
+
 if (activeDrivers.length === 0) {
 const currentRaceMap = {};
 drivers.forEach(d => { currentRaceMap[d.id] = '—'; });
@@ -1805,6 +1844,176 @@ function loadSeason2006() {
     pointsTable = [10, 8, 6, 5, 4, 3, 2, 1];
     renderPointsEditor();
     syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 2006 🏆";
+}
+
+function loadSeason1957() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Maserati": { engine:9, aero:9, reliability:7 },
+        "Ferrari": { engine:8, aero:8, reliability:7 },
+        "Vanwall": { engine:8, aero:8, reliability:6 },
+        "Cooper": { engine:7, aero:7, reliability:7 },
+        "BRM": { engine:7, aero:7, reliability:6 },
+        "Porsche": { engine:6, aero:6, reliability:7 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers57 = [
+        ["Stirling Moss","Maserati",8.5], ["Juan Manuel Fangio","Maserati",10], ["Jean Behra","Maserati",6], ["Harry Schell","Maserati",7], // Maserati
+        ["Mike Hawthorn","Ferrari",8], ["Luigi Musso","Ferrari",7.5], ["Wolfgang von Trips","Ferrari",7], ["Peter Collins","Ferrari",6.5], // Ferrari
+        ["Stuart Lewis-Evans","Vanwall",8], ["Tony Brooks","Vanwall",7], // Vanwall
+        ["Jack Brabham","Cooper",8.5], ["Bob Gerard","Cooper",6], ["Les Leston","Cooper",5.5], // Cooper
+        ["Herbert MacKay-Fraser","BRM",6], ["Ron Flockhart","BRM",6], ["Roy Salvadori","BRM",5.5], ["Jack Fairman","BRM",5], // BRM
+        ["Edgar Barth","Porsche",6], ["Umberto Maglioli","Porsche",6], ["Carel Godin de Beaufort","Porsche",5.5] // Porsche
+    ];
+    for(let d of drivers57) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 7; currentSeasonYear = 1957;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1957 🏆";
+}
+
+function loadSeason1956() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Ferrari": { engine:9, aero:9, reliability:7 },
+        "Maserati": { engine:9, aero:9, reliability:7 },
+        "Vanwall": { engine:8, aero:8, reliability:7 },
+        "BRM": { engine:7, aero:7, reliability:7 },
+        "Connaught": { engine:6, aero:6, reliability:7 },
+        "Gordini": { engine:6, aero:6, reliability:7 },
+        "Cooper": { engine:6, aero:7, reliability:7 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers56 = [
+        ["Juan Manuel Fangio","Ferrari",10], ["Wolfgang von Trips","Ferrari",7], ["Luigi Musso","Ferrari",7], ["Peter Collins","Ferrari",7], // Ferrari
+        ["Stirling Moss","Maserati",8.5], ["Jack Brabham","Maserati",7], ["Mike Hawthorn","Maserati",7.5], ["José Froilán González","Maserati",7.5], // Maserati
+        ["Maurice Trintignant","Vanwall",7.5], ["Harry Schell","Vanwall",7], ["Piero Taruffi","Vanwall",6.5], // Vanwall
+        ["Archie Scott Brown","Connaught",6.5], ["Les Leston","Connaught",5.5], ["Jack Fairman","Connaught",5], // Connaught
+        ["Tony Brooks","BRM",6.5], ["Ron Flockhart","BRM",5.5], // BRM
+        ["Robert Manzon","Gordini",6], ["André Pilette","Gordini",5.5], ["Élie Bayol","Gordini",5], // Gordini
+        ["Bob Gerard","Cooper",5.5] // Cooper
+    ];
+    for(let d of drivers56) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 7; currentSeasonYear = 1956;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1956 🏆";
+}
+
+function loadSeason1955() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Mercedes": { engine:10, aero:10, reliability:8 },
+        "Ferrari": { engine:8, aero:8, reliability:6 },
+        "Maserati": { engine:8, aero:7, reliability:6 },
+        "Cooper": { engine:7, aero:7, reliability:6 },
+        "Vanwall": { engine:7, aero:7, reliability:6},
+        "Connaught": { engine:6, aero:6, reliability:6 },
+        "Gordini": { engine:6, aero:6, reliability:6 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers55 = [
+        ["Juan Manuel Fangio","Mercedes",10], ["Stirling Moss","Mercedes",8], ["Karl Kling","Mercedes",7], ["Piero Taruffi","Mercedes",7], // Mercedes
+        ["Mike Hawthorn","Ferrari",8], ["Maurice Trintignant","Ferrari",7], ["Giuseppe Farina","Ferrari",6.5], ["José Froilán González","Ferrari",6.5], // Ferrari
+        ["André Simon","Maserati",6.5], ["Peter Collins","Maserati",6.5], ["Jean Behra","Maserati",6], ["Luigi Musso","Maserati",5.5], // Maserati
+        ["Jack Brabham","Cooper",7.5], // Cooper
+        ["Ken Wharton","Vanwall",6], ["Harry Schell","Vanwall",5.5], // Vanwall
+        ["Tony Rolt","Connaught",6], ["Peter Walker","Connaught",5], // Connaught
+        ["Robert Manzon","Gordini",5.5], ["Élie Bayol","Gordini",5.5], ["Jean Lucas","Gordini",5] // Gordini (на фото ЛЮКА)
+    ];
+    for(let d of drivers55) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 6; currentSeasonYear = 1955;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1955 🏆";
+}
+
+function loadSeason1954() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Mercedes": { engine:10, aero:10, reliability:7 },
+        "Maserati": { engine:8, aero:8, reliability:6 },
+        "Ferrari": { engine:9, aero:8, reliability:6 },
+        "Cooper": { engine:7, aero:7, reliability:6 },
+        "Connaught": { engine:6, aero:6, reliability:6 },
+        "Vanall": { engine:7, aero:7, reliability:6 },
+        "Gordini": { engine:6, aero:6, reliability:6 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers54 = [
+        ["Juan Manuel Fangio","Mercedes",10], ["Karl Kling","Mercedes",6.5], ["Hans Herrmann","Mercedes",6.5], // Mercedes
+        ["Alberto Ascari","Maserati",8], ["Stirling Moss","Maserati",7.5], ["Ken Wharton","Maserati",6], ["Prince Bira","Maserati",6], // Maserati
+        ["Giuseppe Farina","Ferrari",7  ], ["Maurice Trintignant","Ferrari",7.5], ["Mike Hawthorn","Ferrari",7.5], ["José Froilán González","Ferrari",8], // Ferrari
+        ["Alan Brown","Cooper",6.5], ["Horace Gould","Cooper",6.5], ["Bob Gerard","Cooper",6.5], // Cooper
+        ["Leslie Thorne","Connaught",6.5], ["Peter Whitehead","Connaught",6], // Connaught
+        ["Peter Collins","Vanall",6.5], // Vanvall (на фото VANVALL)
+        ["Jean Behra","Gordini",6], ["Harry Schell","Gordini",5.5], ["Paul Bayol","Gordini",5] // Gordini
+    ];
+    for(let d of drivers54) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 8; currentSeasonYear = 1954;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1954 🏆";
+}
+
+function loadSeason1953() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Ferrari": { engine:10, aero:10, reliability:6 },
+        "Maserati": { engine:9, aero:9, reliability:6 },
+        "Cooper": { engine:8, aero:7, reliability:6 },
+        "Gordini": { engine:7, aero:7, reliability:6 },
+        "Connaught": { engine:6, aero:7, reliability:6 },
+        "HWM": { engine:6, aero:6, reliability:6 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers53 = [
+        ["Alberto Ascari","Ferrari",9.5], ["Giuseppe Farina","Ferrari",8.5], ["Mike Hawthorn","Ferrari",8.0], ["Louis Rosier","Ferrari",6], // Ferrari
+        ["Juan Manuel Fangio","Maserati",9.5], ["Toulo de Graffenried","Maserati",7.5], ["José Froilán González","Maserati",7.5], ["Felice Bonetto","Maserati",6], // Maserati
+        ["Stirling Moss","Cooper",9], ["Ken Wharton","Cooper",5.5], ["Bob Gerard","Cooper",5.5], // Cooper
+        ["Johnny Claes","Connaught",7], ["Roy Salvadori","Connaught",6], ["Prince Bira","Connaught",5], // Connaught
+        ["Peter Collins","HWM",6.5], ["Lance Macklin","HWM",6], ["Yves Giraud-Cabantous","HWM",5], // HWM
+        ["Maurice Trintignant","Gordini",6.5], ["Jean Behra","Gordini",6], ["Harry Schell","Gordini",5.5] // Gordini
+    ];
+    for(let d of drivers53) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 8; currentSeasonYear = 1953;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1953 🏆";
+}
+
+function loadSeason1952() {
+    teams = []; drivers = []; driverPoints = {}; constructorPoints = {}; seasonHistory = []; lastRaceResults = []; lastRaceTeamPoints = {}; completedRaces = 0;
+    const teamSpecs = {
+        "Ferrari": { engine:10, aero:10, reliability:6 },
+        "Cooper": { engine:8, aero:8, reliability:6 },
+        "HWM": { engine:7, aero:7, reliability:6 },
+        "Gordini": { engine:7, aero:7, reliability:6 },
+        "Maserati": { engine:7, aero:7, reliability:6 },
+        "Veritas": { engine:6, aero:6, reliability:6 },
+        "Simca": { engine:6, aero:6, reliability:6 }
+    };
+    for(let [name, spec] of Object.entries(teamSpecs)) teams.push({ id: generateId(), name, engine: spec.engine, aero: spec.aero, reliability: spec.reliability });
+    const tm = Object.fromEntries(teams.map(t=>[t.name, t]));
+    const drivers52 = [
+        ["Alberto Ascari","Ferrari",10], ["Giuseppe Farina","Ferrari",8.5], ["Peter Hirt","Ferrari",6], ["Rudi Fischer","Ferrari",7], // Ferrari
+        ["Mike Hawthorn","Cooper",8.5], ["Alan Brown","Cooper",6], ["Eric Brandon","Cooper",6], // Cooper
+        ["Stirling Moss","HWM",9], ["Peter Collins","HWM",7], ["George Abecassis","HWM",6], ["Lance Macklin","HWM",6], // HWM
+        ["Paul Frère","Gordini",6.5], ["Robert Manzon","Gordini",7], ["Jean Behra","Gordini",7.5], // Gordini
+        ["Harry Schell","Maserati",7], ["Toulo de Graffenried","Maserati",6.5], // Maserati
+        ["Toni Ulmen","Veritas",6], // Veritas
+        ["Prince Bira","Simca",7.5], ["Maurice Trintignant","Simca",7.5], ["Johnny Claes","Simca",5.5] // Simca
+    ];
+    for(let d of drivers52) { let teamObj = tm[d[1]]; if(teamObj) drivers.push({ id: generateId(), name: d[0], teamId: teamObj.id, rating: d[2] }); }
+    totalSeasonRaces = 8; currentSeasonYear = 1952;
+    pointsTable = [8, 6, 4, 3, 2];
+    renderPointsEditor();
+    syncPoints(); renderAll(); document.getElementById('simulatorTitle').innerHTML = "🏆 ФОРМУЛА-1 · СЕЗОН 1952 🏆";
 }
 
 function loadSeason1951() {
@@ -2468,6 +2677,12 @@ else if (y === 2011) { loadSeason2011(); showSimulator(); }
 else if (y === 2009) { loadSeason2009(); showSimulator(); }
 else if (y === 2008) { loadSeason2008(); showSimulator(); }
 else if (y === 2006) { loadSeason2006(); showSimulator(); }
+else if (y === 1957) { loadSeason1957(); showSimulator(); }
+else if (y === 1956) { loadSeason1956(); showSimulator(); }
+else if (y === 1955) { loadSeason1955(); showSimulator(); }
+else if (y === 1954) { loadSeason1954(); showSimulator(); }
+else if (y === 1953) { loadSeason1953(); showSimulator(); }
+else if (y === 1952) { loadSeason1952(); showSimulator(); }
 else if (y === 1951) { loadSeason1951(); showSimulator(); }
 else if (y === 1950) { loadSeason1950(); showSimulator(); }
 else alert(`Сезон F1 ${y} в разработке.`);
